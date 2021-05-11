@@ -19,62 +19,51 @@
             <span class="">that</span><br /> -->
       Contact<span class="font-weight-bold">US.</span>
     </h1>
-    {{ name }}<br />{{ email }}
+    {{ form }}
     <v-text-field
       label="Name"
-      v-model="name"
+      v-model="form.name"
       placeholder="Enter your name"
     ></v-text-field>
     <v-text-field
       label="Email"
-      v-model="email"
+      v-model="form.email"
       placeholder="Enter your email"
     ></v-text-field>
-    <v-text-field
-      label="Name"
-      v-model="name"
-      placeholder="Enter your name"
-    ></v-text-field>
-    <v-text-field
-      label="Email"
-      v-model="email"
-      placeholder="Enter your email"
-    ></v-text-field>
+
     <v-text-field
       label="Business Name"
-      v-model="business_name"
+      v-model="form.business_name"
       placeholder="Enter your business name"
     ></v-text-field>
     <v-text-field
       label="Business Link"
-      v-model="business_link"
+      v-model="form.business_link"
       placeholder="Enter your business link"
     ></v-text-field>
     <v-text-field
       label="Contact"
-      v-model="contact"
+      v-model="form.contact"
       placeholder="Enter your contact"
     ></v-text-field>
     <v-text-field
       label="Service"
-      v-model="service"
+      v-model="form.service"
       placeholder="Enter your service"
     ></v-text-field>
     <v-text-field
       label="Budget"
-      v-model="budget"
+      v-model="form.budget"
       placeholder="Enter your budget"
     ></v-text-field>
     <v-textarea
       background-color="black"
       color="white"
       label="Details"
-      v-model="details"
+      v-model="form.details"
       placeholder="Enter your details"
     ></v-textarea>
-    <v-btn block>
-    Save
-  </v-btn>
+    <v-btn block @click="submit"> Save </v-btn>
     <v-row no-gutters></v-row>
   </v-container>
 </template>
@@ -83,15 +72,29 @@
 export default {
   data() {
     return {
-      name: 'Anik',
-      business_name: 'Iotron',
-      email: 'anikadhikary94@gmail.com',
-      business_link : 'Iotron.com',
-      contact : '00000000000',
-      service : 'Web Development',
-      budget: '00000',
-      details: 'Enter details',
+      form: {
+        name: 'Anik',
+        business_name: 'Iotron',
+        email: 'anikadhikary94@gmail.com',
+        business_link: 'Iotron.com',
+        contact: '1234567890',
+        service: 'Web Development',
+        budget: '1000',
+        details: 'Enter details',
+      },
     }
+  },
+  methods: {
+    async submit() {
+      await this.$axios
+        .$post('businessform', this.form)
+        .then((result) => {
+          console.log(result)
+        })
+        .catch((err) => {
+          console.log(err)
+        })
+    },
   },
 }
 </script>
