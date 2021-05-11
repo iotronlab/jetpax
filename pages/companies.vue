@@ -30,6 +30,51 @@
       v-model="email"
       placeholder="Enter your email"
     ></v-text-field>
+    <v-text-field
+      label="Name"
+      v-model="name"
+      placeholder="Enter your name"
+    ></v-text-field>
+    <v-text-field
+      label="Email"
+      v-model="email"
+      placeholder="Enter your email"
+    ></v-text-field>
+    <v-text-field
+      label="Business Name"
+      v-model="business_name"
+      placeholder="Enter your business name"
+    ></v-text-field>
+    <v-text-field
+      label="Business Link"
+      v-model="business_link"
+      placeholder="Enter your business link"
+    ></v-text-field>
+    <v-text-field
+      label="Contact"
+      v-model="contact"
+      placeholder="Enter your contact"
+    ></v-text-field>
+    <v-text-field
+      label="Service"
+      v-model="service"
+      placeholder="Enter your service"
+    ></v-text-field>
+    <v-text-field
+      label="Budget"
+      v-model="budget"
+      placeholder="Enter your budget"
+    ></v-text-field>
+    <v-textarea
+      background-color="black"
+      color="white"
+      label="Details"
+      v-model="details"
+      placeholder="Enter your details"
+    ></v-textarea>
+    <v-btn block>
+    Save
+  </v-btn>
     <v-row no-gutters></v-row>
   </v-container>
 </template>
@@ -41,6 +86,11 @@ export default {
       name: 'Anik',
       business_name: 'Iotron',
       email: 'anikadhikary94@gmail.com',
+      business_link : 'Iotron.com',
+      contact : '00000000000',
+      service : 'Web Development',
+      budget: '00000',
+      details: 'Enter details',
     }
   },
 }
