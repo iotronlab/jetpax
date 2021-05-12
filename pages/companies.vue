@@ -63,8 +63,10 @@
       v-model="form.details"
       placeholder="Enter your details"
     ></v-textarea>
+
     <v-btn block @click="submit"> Save </v-btn>
     <v-row no-gutters></v-row>
+    {{ errorMessage }}
   </v-container>
 </template>
 
@@ -82,6 +84,7 @@ export default {
         budget: '1000',
         details: 'Enter details',
       },
+      errorMessage: null,
     }
   },
   methods: {
@@ -93,6 +96,7 @@ export default {
         })
         .catch((err) => {
           console.log(err)
+          this.errorMessage = err.response.data
         })
     },
   },
