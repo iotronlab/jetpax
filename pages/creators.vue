@@ -12,73 +12,79 @@
       best, that is, create awesome content.
     </h4>
     <h1 class="text-h4">
-      Contact<span class="font-weight-bold">US.</span>
+      Contact <span class="font-weight-bold">US.</span>
     </h1>
     <v-text-field
       label="Name"
-      v-model="name"
+      v-model="form.name"
       placeholder="Enter your name"
     ></v-text-field>
     <v-text-field
       label="Email"
-      v-model="email"
+      v-model="form.email"
       placeholder="Enter your email"
     ></v-text-field>
-    <v-text-field
-      label="Name"
-      v-model="name"
-      placeholder="Enter your name"
-    ></v-text-field>
-    <v-text-field
-      label="Email"
-      v-model="email"
-      placeholder="Enter your email"
-    ></v-text-field>
+
     <v-text-field
       label="Business Name"
-      v-model="business_name"
-      placeholder="Enter your business name"
+      v-model="form.profile_name"
+      placeholder="Enter your profile name"
     ></v-text-field>
     <v-text-field
       label="Business Link"
-      v-model="business_link"
-      placeholder="Enter your business link"
+      v-model="form.profile_link"
+      placeholder="Enter your profile link"
     ></v-text-field>
     <v-text-field
       label="Contact"
-      v-model="contact"
+      v-model="form.contact"
       placeholder="Enter your contact"
     ></v-text-field>
     <v-text-field
-      label="Service"
-      v-model="service"
-      placeholder="Enter your service"
-    ></v-text-field>
-    <v-text-field
-      label="Budget"
-      v-model="budget"
-      placeholder="Enter your budget"
+      label="Location"
+      v-model="form.location"
+      placeholder="Enter your location"
     ></v-text-field>
     <v-textarea
-      background-color="black"
       color="white"
       label="Details"
-      v-model="details"
+      v-model="form.details"
       placeholder="Enter your details"
     ></v-textarea>
-    <v-btn block>
-    Save
-    </v-btn>
+    <v-btn block @click="submit"> Save </v-btn>
+    {{ errorMessage }}
   </v-container>
 </template>
 
 <script>
 export default {
-  // transition(to, from) {
-  //   if (from) {
-  //     return 'slide-left'
-  //   }
-  // },
+  data() {
+    return {
+      form: {
+        name: 'Rahul',
+        profile_name: 'Iotron',
+        email: 'abcd@mail.com',
+        profile_link: 'Iotron.com',
+        contact: '1234567890',
+        location: 'Asia',
+        details: 'Enter details',
+      },
+      errorMessage: null,
+    }
+  },
+  methods: {
+    async submit() {
+      await this.$axios
+        .$post('creatorform', this.form)
+        .then((result) => {
+          console.log(result)
+        })
+        .catch((err) => {
+          console.log(err)
+          this.errorMessage = err.response.data
+        })
+    },
+  },
 }
 </script>
 

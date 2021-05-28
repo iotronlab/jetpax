@@ -19,7 +19,6 @@
             <span class="">that</span><br /> -->
       Contact<span class="font-weight-bold">US.</span>
     </h1>
-    {{ form }}
     <v-text-field
       label="Name"
       v-model="form.name"
