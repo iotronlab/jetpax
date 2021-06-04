@@ -2,7 +2,8 @@
 <!-- <v-container>{{creator}}</v-container> -->
 <v-container>
     <v-row justify="space-around">
-      <v-card class="mt-5" absolute width="600" height="500">
+      <!-- {{creator}} -->
+      <v-card class="mt-5">
         <v-img
           height="200px"
           src="https://cdn.pixabay.com/photo/2020/07/12/07/47/bee-5396362_1280.jpg"
@@ -73,11 +74,20 @@
 </template>
 <script>
 export default {
-  props: {
-    creator: {
-      type: Object,
-      required: true,
+
+  data() {
+    return{
+      creator : null,
+    }
+  },
+
+  async asyncData ({params, app}){
+    let response = await app.$axios.$get(`creator/${params.slug}`)
+
+    return {
+      creator : response.data
     }
   }
 }
+
 </script>

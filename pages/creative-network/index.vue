@@ -1,25 +1,29 @@
 <template>
   <v-container>
     <!-- Nav bar right -->
-    <v-navigation-drawer v-model="drawer" permanent fixed absolute right>
+    <v-navigation-drawer permanent fixed absolute right>
       <v-list-item
-          v-for="(item, i) in items"
+          v-for="(filter, i) in filterMenu"
           :key="i">
           <v-list-item-content>
-            <v-list-item-title v-text="item.title" />
+            <v-list-item-title v-text="filter.admin_name" />
             <v-list-item-subtitle>
               <v-col>
                 <v-select
-                  :items="item.menu"
-                  :label= "item.title"
-                  v-model="item.title"
-                  solo
-                ></v-select>
+                  :items="filter.options"
+                  item-text="admin_name"
+                  item-value="admin_name"
+                  label="Select"
+                  @change="filterUpdate"
+                  return-object
+                >
+              </v-select>
               </v-col>
             </v-list-item-subtitle>
           </v-list-item-content>
         </v-list-item>
         <v-btn block @click="submit" color="red"> Filter </v-btn>
+        <v-btn class="mt-4" block @click="reset" color="red"> Reset </v-btn>
     </v-navigation-drawer>
 
 
@@ -40,14 +44,8 @@ export default  {
     return {
 
       showFilter : 'true',
-      filterOpions : [],
-      Language: '',
-      Category: '',
-      Gender: '',
-      Social: '',
-      params :{
-
-      },
+      filterMenu : {},
+      filterParams :{},
       creators : {},
       items: [
         {
@@ -72,21 +70,48 @@ export default  {
   async fetch(){
     await this.$axios
       .$get("creator",{
-        params: {
-          followers: "500",
-          languages: "english"
-        }
+        params: {}
         }).then((res) => {
         this.creators = res.data
       }).catch((err) => {
         console.log(err)
       });
+
+    await this.$axios
+      .$get("filter")
+      .then((ress) => {
+        this.filterMenu = ress.data
+      }).catch((err) => {
+        console.log(err)
+      });
   },
+
+
   methods: {
     async submit() {
-      console.log(this.Category);
-      console.log(this.Language);
+      await this.$axios
+      .$get("creator",{
+        params: this.filterParams
+        }).then((res) => {
+
+          this.$router.push({ query: this.filterParams })
+          this.creators = res.data
+
+      }).catch((err) => {
+        console.log(err)
+      });
     },
+
+    filterUpdate(data){
+      this.filterParams[data.filter_code] = data.admin_name
+      // this.$router.push({ query: this.filterParams })
+    },
+
+    reset(){
+      this.filterParams = {}
+      this.$router.push({ query: this.filterParams })
+      this.$fetch();
+    }
   }
 }
 </script>
