@@ -1,6 +1,6 @@
 <template>
   <v-container fluid class="mt-n16 pa-0">
-    <v-img src="land.jpg" max-height="600" dark>
+    <v-img src="/land.png" max-height="750" contain dark>
       <v-row no-gutters>
         <v-col cols="12" style="height: 160px">
           <vue-particles
@@ -23,15 +23,15 @@
           </vue-particles>
         </v-col>
         <v-col class="text-center" cols="12">
-          <h1 class="text-h5">
+          <h1 class="text-button">
             <!-- <span class="light-green--text">ideas</span>
             <span class="">that</span><br /> -->
-            <span class="font-weight-thin">Digital Agency connecting</span>
+            <span>Digital Marketing Agency connecting</span>
           </h1>
           <h1 class="text-h2">
             <!-- <span class="light-green--text">ideas</span>
             <span class="">that</span><br /> -->
-            <span class="font-weight-black">Brands -&- Influencers </span>
+            <span class="">Brands -&- Influencers </span>
           </h1>
           <!-- <h4 class="text-subtitle-2">
             A Progressive Web Agency that solves all your design and development
@@ -75,8 +75,11 @@
           all your marketing and promotional needs. We at JETPAX aim to be the
           biggest and best
           <span class="creator--text">community of influencers</span>.
-        </h4></v-col
-      ></v-row
+        </h4>
+        <v-btn class="mt-4" to="creative-network"
+          >Visit influencer network</v-btn
+        >
+      </v-col></v-row
     >
   </v-container>
   <!-- <v-col cols="12" class="pa-2">

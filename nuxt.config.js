@@ -20,7 +20,7 @@ export default {
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: [],
+  css: ['@/assets/main.css'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
@@ -38,6 +38,7 @@ export default {
     '@nuxtjs/stylelint-module',
     // https://go.nuxtjs.dev/vuetify
     '@nuxtjs/vuetify',
+    // '@nuxtjs/google-fonts',
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -61,6 +62,18 @@ export default {
       lang: 'en',
     },
   },
+  // googleFonts: {
+  //   families: {
+  //     Ubuntu: true,
+  //      Roboto: true,
+  //     // 'Josefin+Sans': true,
+  //     // Lato: [100, 300],
+  //     // Raleway: {
+  //     //   wght: [100, 400],
+  //     //   ital: [100]
+  //     // },
+  //   },
+  // },
 
   // Content module configuration: https://go.nuxtjs.dev/config-content
   content: {},
@@ -74,7 +87,7 @@ export default {
 
       themes: {
         dark: {
-          primary: colors.blue.darken2,
+          primary: colors.blue.lighten1,
           accent: colors.grey.darken3,
           secondary: colors.amber.darken3,
           info: colors.teal.lighten1,

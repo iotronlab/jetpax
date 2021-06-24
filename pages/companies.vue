@@ -19,53 +19,78 @@
             <span class="">that</span><br /> -->
       Contact<span class="font-weight-bold">US.</span>
     </h1>
-    <v-text-field
-      label="Name"
-      v-model="form.name"
-      placeholder="Enter your name"
-    ></v-text-field>
-    <v-text-field
-      label="Email"
-      v-model="form.email"
-      placeholder="Enter your email"
-    ></v-text-field>
+    <v-row no-gutters>
+      <v-col cols="12" lg="7">
+        <v-container>
+          <v-col cols="12" lg="10">
+            <v-text-field
+              label="Name"
+              v-model="form.name"
+              placeholder="Enter your name"
+              filled
+              shaped
+            ></v-text-field>
+            <v-text-field
+              label="Email"
+              v-model="form.email"
+              placeholder="Enter your email"
+              filled
+              shaped
+            ></v-text-field>
 
-    <v-text-field
-      label="Business Name"
-      v-model="form.business_name"
-      placeholder="Enter your business name"
-    ></v-text-field>
-    <v-text-field
-      label="Business Link"
-      v-model="form.business_link"
-      placeholder="Enter your business link"
-    ></v-text-field>
-    <v-text-field
-      label="Contact"
-      v-model="form.contact"
-      placeholder="Enter your contact"
-    ></v-text-field>
-    <v-text-field
-      label="Service"
-      v-model="form.service"
-      placeholder="Enter your service"
-    ></v-text-field>
-    <v-text-field
-      label="Budget"
-      v-model="form.budget"
-      placeholder="Enter your budget"
-    ></v-text-field>
-    <v-textarea
-      background-color="black"
-      color="white"
-      label="Details"
-      v-model="form.details"
-      placeholder="Enter your details"
-    ></v-textarea>
+            <v-text-field
+              label="Business Name"
+              v-model="form.business_name"
+              placeholder="Enter your business name"
+              filled
+              shaped
+            ></v-text-field>
+            <v-text-field
+              label="Business Link"
+              v-model="form.business_link"
+              placeholder="Enter your business link"
+              filled
+              shaped
+            ></v-text-field>
+            <v-text-field
+              label="Contact"
+              v-model="form.contact"
+              placeholder="Enter your contact"
+              filled
+              shaped
+            ></v-text-field>
+            <v-text-field
+              label="Service"
+              v-model="form.service"
+              placeholder="Enter your service"
+              filled
+              shaped
+            ></v-text-field>
+            <v-text-field
+              label="Budget"
+              v-model="form.budget"
+              placeholder="Enter your budget"
+              filled
+              shaped
+            ></v-text-field>
+            <v-textarea
+              label="Details"
+              v-model="form.details"
+              placeholder="Enter your details"
+              filled
+              shaped
+            ></v-textarea>
 
-    <v-btn block @click="submit"> Save </v-btn>
-    <v-row no-gutters></v-row>
-    {{ errorMessage }}
+            <v-btn block @click="submit"> Save </v-btn>
+            <v-row no-gutters></v-row>
+            {{ errorMessage }}</v-col
+          ></v-container
+        ></v-col
+      >
+      <v-col cols="12" lg="5"
+        ><v-img src="/contact-us-brand.png" contain></v-img
+      ></v-col>
+    </v-row>
   </v-container>
 </template>
 

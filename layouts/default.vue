@@ -1,6 +1,12 @@
 <template>
   <v-app dark>
     <v-navigation-drawer v-model="drawer" temporary fixed app>
+      <v-switch
+        v-model="$vuetify.theme.dark"
+        inset
+        label="Dark Mode"
+        persistent-hint
+      ></v-switch>
       <v-list>
         <v-list-item
           v-for="(item, i) in items"
@@ -18,10 +24,9 @@
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
-    <v-app-bar flat fixed dark app color="transparent">
+    <v-app-bar flat fixed app color="transparent">
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
-
-      <v-img src="logo.png" max-width="180" />
+      <nuxt-link to="/"> <v-img src="logo.png" width="210" /></nuxt-link>
       <v-spacer />
     </v-app-bar>
     <v-main>

@@ -11,48 +11,67 @@
       handle all your business needs, so that you are free to do what you do
       best, that is, create awesome content.
     </h4>
-    <h1 class="text-h4">
-      Contact <span class="font-weight-bold">US.</span>
-    </h1>
-    <v-text-field
-      label="Name"
-      v-model="form.name"
-      placeholder="Enter your name"
-    ></v-text-field>
-    <v-text-field
-      label="Email"
-      v-model="form.email"
-      placeholder="Enter your email"
-    ></v-text-field>
+    <h1 class="text-h4">Contact <span class="font-weight-bold">US.</span></h1>
+    <v-row no-gutters>
+      <v-col cols="12" lg="7">
+        <v-container class="pa-0">
+          <v-col cols="12" lg="10" class="mx-auto">
+            <v-text-field
+              label="Name"
+              v-model="form.name"
+              placeholder="Enter your name"
+              shaped
+              filled
+            ></v-text-field>
+            <v-text-field
+              label="Email"
+              v-model="form.email"
+              placeholder="Enter your email"
+              filled
+              shaped
+            ></v-text-field>
 
-    <v-text-field
-      label="Business Name"
-      v-model="form.profile_name"
-      placeholder="Enter your profile name"
-    ></v-text-field>
-    <v-text-field
-      label="Business Link"
-      v-model="form.profile_link"
-      placeholder="Enter your profile link"
-    ></v-text-field>
-    <v-text-field
-      label="Contact"
-      v-model="form.contact"
-      placeholder="Enter your contact"
-    ></v-text-field>
-    <v-text-field
-      label="Location"
-      v-model="form.location"
-      placeholder="Enter your location"
-    ></v-text-field>
-    <v-textarea
-      color="white"
-      label="Details"
-      v-model="form.details"
-      placeholder="Enter your details"
-    ></v-textarea>
-    <v-btn block @click="submit"> Save </v-btn>
-    {{ errorMessage }}
+            <v-text-field
+              label="Profile Name"
+              v-model="form.profile_name"
+              placeholder="Enter your social media profile name"
+              filled
+              shaped
+            ></v-text-field>
+            <v-text-field
+              label="Profile Link"
+              v-model="form.profile_link"
+              placeholder="Enter your social media profile link"
+              filled
+              shaped
+            ></v-text-field>
+            <v-text-field
+              label="Contact"
+              v-model="form.contact"
+              placeholder="Enter your contact"
+              filled
+              shaped
+            ></v-text-field>
+            <v-text-field
+              label="Location"
+              v-model="form.location"
+              placeholder="Enter your location"
+              filled
+              shaped
+            ></v-text-field>
+            <v-textarea
+              label="Details"
+              v-model="form.details"
+              placeholder="Enter your details"
+              filled
+              shaped
+            ></v-textarea></v-col
+        ></v-container>
+        <v-btn block @click="submit"> Save </v-btn>
+        {{ errorMessage }}</v-col
+      >
+      <v-col cols="12" lg="5"><v-img src="/contact-us.png"></v-img></v-col>
+    </v-row>
   </v-container>
 </template>
 
@@ -61,13 +80,13 @@ export default {
   data() {
     return {
       form: {
-        name: 'Rahul',
-        profile_name: 'Iotron',
-        email: 'abcd@mail.com',
-        profile_link: 'Iotron.com',
-        contact: '1234567890',
-        location: 'Asia',
-        details: 'Enter details',
+        name: null,
+        profile_name: null,
+        email: null,
+        profile_link: null,
+        contact: null,
+        location: null,
+        details: null,
       },
       errorMessage: null,
     }
