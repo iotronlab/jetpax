@@ -87,7 +87,7 @@ export default {
 
       themes: {
         dark: {
-          primary: colors.blue.lighten1,
+          primary: '#6366F1',
           accent: colors.grey.darken3,
           secondary: colors.amber.darken3,
           info: colors.teal.lighten1,
@@ -97,7 +97,7 @@ export default {
           brand: colors.blue.accent1,
 
           creator: colors.deepPurple.accent1,
-          agency: colors.lightGreen.base,
+          agency: '#60A5FA',
         },
       },
     },
