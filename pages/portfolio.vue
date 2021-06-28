@@ -21,7 +21,7 @@
         <h5>{{ portfolio.project_description }}</h5>
       </v-col>
       <v-col cols="12" md="6">
-        <PortfolioImages v-bind:images="portfolios.images" />
+        <PortfolioImages v-bind:images="portfolio.images" />
       </v-col>
     </v-row>
   </v-container>
