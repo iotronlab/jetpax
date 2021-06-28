@@ -1,8 +1,8 @@
 <template>
-  <v-container fluid class="mt-n16 pa-0">
-    <v-img src="/land.png" max-height="750" contain dark>
+  <v-container fluid class="pa-0">
+    <v-img src="/land.png" max-height="750" contain>
       <v-row no-gutters>
-        <v-col cols="12" style="height: 160px">
+        <!-- <v-col cols="12" style="height: 160px">
           <vue-particles
             color="#dedede"
             :particleOpacity="0.7"
@@ -21,9 +21,9 @@
             clickMode="push"
           >
           </vue-particles>
-        </v-col>
+        </v-col> -->
         <v-col class="text-center" cols="12">
-          <h1 class="text-button">
+          <h1 class="text-button mt-10">
             <!-- <span class="light-green--text">ideas</span>
             <span class="">that</span><br /> -->
             <span>Digital Marketing Agency connecting</span>
