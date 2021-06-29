@@ -5,3 +5,12 @@
   font-display: swap;
   src: url('~assets/fonts/AbrilFatface.ttf') format('truetype');
 }
+
+.page-enter-active,
+.page-leave-active {
+  transition: opacity 0.5s ease-in-out;
+}
+.page-enter,
+.page-leave-to {
+  opacity: 0;
+}
