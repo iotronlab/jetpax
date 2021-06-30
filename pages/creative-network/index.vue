@@ -39,7 +39,16 @@
           v-for="(creator, i) in creators"
           :key="i"
         >
-          <CreatorCard :creator="creator" />
+          <NuxtLink
+            :to="{
+              name: 'creative-network-slug',
+              params: {
+                slug: creator.url,
+              },
+            }"
+          >
+            <CreatorCard :creator="creator" />
+          </NuxtLink>
         </v-col>
       </v-row>
     </v-col>
@@ -96,7 +105,7 @@ export default {
   },
   async fetch() {
     await this.$axios
-      .$get('creator', {
+      .$get('creators', {
         params: {},
       })
       .then((res) => {

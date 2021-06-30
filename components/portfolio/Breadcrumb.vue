@@ -16,17 +16,17 @@ export default {
       {
         text: 'Home',
         disabled: false,
-        href: 'breadcrumbs_dashboard',
+        to: '/',
       },
       {
-        text: 'Link 1',
+        text: 'Portfolio',
         disabled: false,
-        href: 'breadcrumbs_link_1',
+        to: 'portfolio',
       },
       {
         text: 'Link 2',
         disabled: true,
-        href: 'breadcrumbs_link_2',
+        to: 'breadcrumbs_link_2',
       },
     ],
   }),

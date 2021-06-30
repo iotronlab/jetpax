@@ -10,15 +10,8 @@
   <!-- <p>
       {{ portfolios }}
     </p> -->
-  <v-container>
-    <h1 class="text-h4">Portfolios</h1>
-    <v-divider class="my-2"></v-divider>
-    <div class="justify-center">
-      <PortfolioBreadcrumb />
-    </div>
-    <v-divider class="my-2"></v-divider>
-    <br />
-    <!-- <v-row v-for="(portfolio, i) in portfolios" :key="i">
+
+  <!-- <v-row v-for="(portfolio, i) in portfolios" :key="i">
       <v-col cols="12" md="6">
         <h3>Name:</h3>
         <h5>{{ portfolio.name }}</h5>
@@ -31,14 +24,24 @@
         <PortfolioImages v-bind:images="portfolio.images" />
       </v-col>
     </v-row> -->
+
+  <v-container>
+    <h1 class="text-h4">Portfolios</h1>
+    <v-divider class="my-2"></v-divider>
+    <div class="justify-center">
+      <PortfolioBreadcrumb />
+    </div>
+    <v-divider class="my-2"></v-divider>
+    <br />
+
     <v-row
-      class="mb-6"
+      class="mb-3"
       no-gutters
       v-for="(portfolio, i) in portfolios"
       :key="i"
     >
       <v-col sm="5" md="6">
-        <v-card class="pa-2" outlined tile>
+        <v-card class="pa-2">
           <h3>Name:</h3>
           <h5 class="subtitle-2">{{ portfolio.name }}</h5>
           <br />
@@ -54,8 +57,9 @@
           <div class="text-center">
             <v-btn
               rounded
-              color="primary"
+              color="purple"
               dark
+              outlined
               :to="{
                 name: 'portfolio-slug',
                 params: {
@@ -68,10 +72,8 @@
           </div>
         </v-card>
       </v-col>
-      <v-col sm="5" offset-sm="2" md="6" offset-md="0">
-        <v-card class="pa-2" outlined tile>
-          <PortfolioImages v-bind:images="portfolio.images" />
-        </v-card>
+      <v-col sm="5" md="6">
+        <PortfolioImages v-bind:images="portfolio.images" />
       </v-col>
     </v-row>
     <div class="text-center">
@@ -99,7 +101,7 @@ export default {
 
   async fetch() {
     await this.$axios
-      .$get('portfolio')
+      .$get('portfolios')
       .then((res) => {
         this.portfolios = res.data
       })
@@ -108,7 +110,7 @@ export default {
       })
 
     await this.$axios
-      .$get('portfolio')
+      .$get('portfolios')
       .then((res) => {
         this.pageData = res.meta
       })
