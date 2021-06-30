@@ -27,7 +27,9 @@
       </v-list>
     </v-navigation-drawer>
     <v-app-bar id="nav" fixed app flat class="nav-transparent">
-      <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
+      <v-app-bar-nav-icon @click.stop="drawer = !drawer" alt="nav-button">
+        <v-icon slot="default">{{ icons.menu }}</v-icon></v-app-bar-nav-icon
+      >
       <nuxt-link :to="{ name: 'index' }"
         ><v-img
           src="/logo.webp"
@@ -61,10 +63,14 @@
 </template>
 
 <script>
+import { mdiMenu } from '@mdi/js'
 export default {
   data() {
     return {
       drawer: false,
+      icons: {
+        menu: mdiMenu,
+      },
 
       navItems: [
         {
@@ -90,7 +96,7 @@ export default {
         {
           icon: 'mdi-chart-bubble',
           title: 'Portfolio',
-          to: '/inspire',
+          to: '/portfolio',
         },
         {
           icon: 'mdi-chart-bubble',

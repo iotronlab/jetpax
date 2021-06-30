@@ -18,11 +18,12 @@
                   class="ma-2 btn-agency"
                   large
                   to="companies"
+                  alt="for companies"
                   dark
                   rounded
                 >
                   <v-icon large class="mr-2 neon-agency">
-                    mdi-arrow-left-circle-outline
+                    {{ icons.rightArrow }}
                   </v-icon>
                   for companies</v-btn
                 >
@@ -34,13 +35,13 @@
                   class="ma-2 btn-creator"
                   large
                   to="creators"
-                  alt="creators"
+                  alt="for creators"
                   dark
                   rounded
                 >
                   for creators
                   <v-icon large class="ml-2 neon-creator">
-                    mdi-arrow-right-circle-outline
+                    {{ icons.leftArrow }}
                   </v-icon>
                 </v-btn>
               </section>
@@ -84,10 +85,17 @@
 <script>
 import Logo from '~/components/Logo.vue'
 import VuetifyLogo from '~/components/VuetifyLogo.vue'
+import { mdiArrowLeftCircleOutline } from '@mdi/js'
+import { mdiArrowRightCircleOutline } from '@mdi/js'
 
 export default {
   data() {
     return {
+      icons: {
+        leftArrow: mdiArrowLeftCircleOutline,
+        rightArrow: mdiArrowRightCircleOutline,
+      },
+
       services: [
         {
           heading: 'BRAND DESIGN',

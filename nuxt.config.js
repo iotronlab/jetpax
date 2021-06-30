@@ -95,11 +95,11 @@ export default {
   vuetify: {
     customVariables: ['~/assets/variables.scss'],
     treeShake: true,
+    defaultAssets: false,
     theme: {
       dark: true,
       options: {
         variations: false,
-        customProperties: true,
         themeCache: {
           get: (key) => localStorage.getItem(key),
           set: (key, value) => localStorage.setItem(key, value),

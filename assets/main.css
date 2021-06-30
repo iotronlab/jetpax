@@ -14,3 +14,20 @@
 .page-leave-to {
   opacity: 0;
 }
+
+.btn-creator {
+  transition: all 0.5s 0.1s ease-in-out !important;
+  background-size: auto 200%;
+  box-shadow: 0 0 10px #9333ea;
+  background-image: linear-gradient(
+    to bottom,
+    #c084fc 0%,
+    #9333ea 51%,
+    #c084fc 100%
+  );
+}
+
+.btn-creator:hover {
+  background-position: center bottom; /* change the direction of the change here */
+  box-shadow: 0 0 15px #9333ea;
+}
