@@ -34,6 +34,7 @@
           max-width="220"
           contain
           class="hidden-lg-and-up"
+          alt="Logo"
       /></nuxt-link>
       <v-row
         no-gutters

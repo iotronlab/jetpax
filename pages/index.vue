@@ -1,6 +1,6 @@
 <template>
   <v-container fluid class="pa-0">
-    <v-img src="/land.png" max-height="650" contain>
+    <v-img src="/land.png" max-height="650" contain alt="Image">
       <v-row no-gutters class="fill-height text-center">
         <v-col cols="12">
           <h1 class="text-button">Digital Marketing Agency connecting</h1>
@@ -13,50 +13,62 @@
 
           <v-row no-gutters class="mt-12 mb-6">
             <v-col cols="12" lg="6">
-              <v-btn class="ma-2 btn-agency" large to="companies" dark rounded>
-                <v-icon large class="mr-2 neon-agency">
-                  mdi-arrow-left-circle-outline
-                </v-icon>
-                for companies</v-btn
-              ></v-col
+              <section class="agency-btn">
+                <v-btn
+                  class="ma-2 btn-agency"
+                  large
+                  to="companies"
+                  dark
+                  rounded
+                >
+                  <v-icon large class="mr-2 neon-agency">
+                    mdi-arrow-left-circle-outline
+                  </v-icon>
+                  for companies</v-btn
+                >
+              </section></v-col
             >
             <v-col cols="12" lg="6">
-              <v-btn
-                class="ma-2 btn-creator"
-                large
-                to="creators"
-                alt="creators"
-                dark
-                rounded
-              >
-                for creators
-                <v-icon large class="ml-2 neon-creator">
-                  mdi-arrow-right-circle-outline
-                </v-icon>
-              </v-btn></v-col
-            ></v-row
+              <section class="creator-btn">
+                <v-btn
+                  class="ma-2 btn-creator"
+                  large
+                  to="creators"
+                  alt="creators"
+                  dark
+                  rounded
+                >
+                  for creators
+                  <v-icon large class="ml-2 neon-creator">
+                    mdi-arrow-right-circle-outline
+                  </v-icon>
+                </v-btn>
+              </section>
+            </v-col></v-row
           ></v-col
         >
       </v-row></v-img
     >
-    <v-row no-gutters justify="center" class="mb-6">
-      <v-col cols="10" class="mt-6 text-center">
-        <h4 class="text-button" style="line-height: 150%">
-          With a hunger and thirst for innovation, our agency paves the way
-          <span class="agency--text"> brands</span> and
-          <span class="creator--text">influencers</span> connect with their
-          <span class="agency--text"> audiences</span> in the digital space. We
-          are a holistic
-          <span class="agency--text">digital marketing agency </span> covering
-          all your marketing and promotional needs. We at JETPAX aim to be the
-          biggest and best
-          <span class="creator--text">community of influencers</span>.
-        </h4>
-        <v-btn class="mt-4 btn-creator" to="creative-network" large dark
-          >Visit influencer network</v-btn
-        >
-      </v-col></v-row
-    >
+    <section class="paragraph">
+      <v-row no-gutters justify="center" class="mb-6">
+        <v-col cols="10" class="mt-6 text-center">
+          <h4 class="text-button" style="line-height: 150%">
+            With a hunger and thirst for innovation, our agency paves the way
+            <span class="agency--text"> brands</span> and
+            <span class="creator--text">influencers</span> connect with their
+            <span class="agency--text"> audiences</span> in the digital space.
+            We are a holistic
+            <span class="agency--text">digital marketing agency </span> covering
+            all your marketing and promotional needs. We at JETPAX aim to be the
+            biggest and best
+            <span class="creator--text">community of influencers</span>.
+          </h4>
+          <v-btn class="mt-4 btn-creator" to="creative-network" large dark
+            >Visit influencer network</v-btn
+          >
+        </v-col></v-row
+      >
+    </section>
   </v-container>
   <!-- <v-col cols="12" class="pa-2">
           <h1 class="text-h3 text-right lime--text font-weight-bold">
@@ -346,6 +358,40 @@ export default {
   components: {
     Logo,
     VuetifyLogo,
+  },
+
+  mounted() {
+    this.animateOnScroll()
+  },
+  methods: {
+    animateOnScroll() {
+      const gsap = this.$gsap
+      // gsap.registerPlugin(this.$ScrollTrigger)
+      gsap.from('.agency-btn', {
+        x: -100,
+        ease: 'Power3.easeInOut',
+        duration: 2,
+        // scrollTrigger: {
+        //   trigger: '.landing-buttons',
+        // },
+      })
+      gsap.from('.creator-btn', {
+        // ScrollTrigger: {
+        //   trigger: '.landing-buttons',
+        // },
+        ease: 'Power3.easeInOut',
+        x: 100,
+        duration: 2,
+      })
+      gsap.from('.paragraph', {
+        // ScrollTrigger: {
+        //   trigger: '.landing-buttons',
+        // },
+        ease: 'Power3.easeInOut',
+        y: 50,
+        duration: 2,
+      })
+    },
   },
 }
 </script>

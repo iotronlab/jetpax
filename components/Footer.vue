@@ -15,7 +15,12 @@
     </v-row>
     <v-row justify="right" no-gutters>
       <NuxtLink to="/"
-        ><v-img src="/logo.webp" max-width="220" contain class="mr-2"
+        ><v-img
+          src="/logo.webp"
+          max-width="220"
+          contain
+          class="mr-2"
+          alt="Logo"
       /></NuxtLink>
       <span class="mr-2">&copy; {{ new Date().getFullYear() }}</span>
     </v-row>
