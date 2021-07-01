@@ -27,7 +27,10 @@
       </v-list>
     </v-navigation-drawer>
     <v-app-bar id="nav" fixed app flat class="nav-transparent">
-      <v-app-bar-nav-icon @click.stop="drawer = !drawer" alt="nav-button">
+      <v-app-bar-nav-icon
+        @click.stop="drawer = !drawer"
+        aria-label="nav-button"
+      >
         <v-icon slot="default">{{ icons.menu }}</v-icon></v-app-bar-nav-icon
       >
       <nuxt-link :to="{ name: 'index' }"
@@ -49,8 +52,11 @@
         /></nuxt-link>
         <v-btn text v-for="(item, i) in navItems" :key="i" color="creator">{{
           item.title
-        }}</v-btn> </v-row
-      ><v-btn>Contact</v-btn>
+        }}</v-btn>
+      </v-row>
+      <v-btn icon class="ml-auto" aria-label="call"
+        ><v-icon>{{ icons.call }}</v-icon></v-btn
+      >
     </v-app-bar>
     <v-main>
       <nuxt />
@@ -64,12 +70,31 @@
 
 <script>
 import { mdiMenu } from '@mdi/js'
+import { mdiPhone } from '@mdi/js'
 export default {
+  head() {
+    return {
+      link: [
+        {
+          rel: 'preload',
+          as: 'style',
+          href: 'https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap',
+        },
+        {
+          rel: 'stylesheet',
+          href: 'https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap',
+          media: 'print',
+          onload: "this.media='all'",
+        },
+      ],
+    }
+  },
   data() {
     return {
       drawer: false,
       icons: {
         menu: mdiMenu,
+        call: mdiPhone,
       },
 
       navItems: [

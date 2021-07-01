@@ -20,18 +20,21 @@ export default {
           'Digital Marketing Agency connecting brands and influencers/content-creators.',
       },
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+    link: [
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      {
+        rel: 'preconnect',
+        href: 'https://fonts.gstatic.com',
+        crossorigin: '',
+      },
+    ],
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: ['@/assets/main.css'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [
-    // {
-    //   src: '~/plugins/particles.js',
-    // },
-  ],
+  plugins: [],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -42,9 +45,9 @@ export default {
     '@nuxtjs/stylelint-module',
     // https://go.nuxtjs.dev/vuetify
     '@nuxtjs/vuetify',
+
     // '@nuxtjs/google-fonts',
-    'nuxt-gsap-module'
-    
+    //  'nuxt-gsap-module',
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -55,13 +58,18 @@ export default {
     '@nuxtjs/pwa',
     // https://go.nuxtjs.dev/content
     '@nuxt/content',
+    '@nuxtjs/sitemap',
+    '@nuxtjs/component-cache',
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     baseURL: 'http://localhost:8000/api',
   },
-
+  sitemap: {
+    hostname: 'https://www.jetpax.org',
+    gzip: true,
+  },
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
     manifest: {
@@ -69,12 +77,12 @@ export default {
     },
   },
 
-  gsap: {
-    extraPlugins: {
-      scrollTo: true,
-      scrollTrigger: true
-    }
-  },
+  // gsap: {
+  //   extraPlugins: {
+  //     scrollTo: true,
+  //     scrollTrigger: true,
+  //   },
+  // },
   // googleFonts: {
   //   families: {
   //     Ubuntu: true,
@@ -99,6 +107,7 @@ export default {
     theme: {
       dark: true,
       options: {
+        customProperties: false,
         variations: false,
         themeCache: {
           get: (key) => localStorage.getItem(key),
@@ -135,5 +144,38 @@ export default {
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {},
+  build: {
+    extractCSS: true,
+    optimization: {
+      splitChunks: {
+        cacheGroups: {
+          styles: {
+            name: 'styles',
+            test: /\.(css|vue)$/,
+            chunks: 'all',
+            enforce: true,
+          },
+        },
+      },
+    },
+    analyze: {
+      analyzerMode: 'static',
+    },
+    babel: {
+      presets({ isClient }, preset) {
+        if (isClient) {
+          preset[1].targets = {
+            browsers: [
+              'Chrome >= 60',
+              'Safari >= 10.1',
+              'iOS >= 10.3',
+              'Firefox >= 54',
+              'Edge >= 15',
+            ],
+          }
+        }
+        return [preset]
+      },
+    },
+  },
 }

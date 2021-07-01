@@ -23,11 +23,6 @@ export default {
         disabled: false,
         to: 'portfolio',
       },
-      {
-        text: 'Link 2',
-        disabled: true,
-        to: 'breadcrumbs_link_2',
-      },
     ],
   }),
 }

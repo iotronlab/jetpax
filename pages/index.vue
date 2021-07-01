@@ -1,6 +1,12 @@
 <template>
   <v-container fluid class="pa-0">
-    <v-img src="/land.png" max-height="650" contain alt="Image">
+    <v-img
+      :src="require('@/assets/img/landing-image.webp')"
+      height="650"
+      width="100%"
+      contain
+      alt="landing-image"
+    >
       <v-row no-gutters class="fill-height text-center">
         <v-col cols="12">
           <h1 class="text-button">Digital Marketing Agency connecting</h1>
@@ -53,7 +59,7 @@
     <section class="paragraph">
       <v-row no-gutters justify="center" class="mb-6">
         <v-col cols="10" class="mt-6 text-center">
-          <h4 class="text-button" style="line-height: 150%">
+          <h2 class="text-button" style="line-height: 150%">
             With a hunger and thirst for innovation, our agency paves the way
             <span class="agency--text"> brands</span> and
             <span class="creator--text">influencers</span> connect with their
@@ -63,7 +69,7 @@
             all your marketing and promotional needs. We at JETPAX aim to be the
             biggest and best
             <span class="creator--text">community of influencers</span>.
-          </h4>
+          </h2>
           <v-btn class="mt-4 btn-creator" to="creative-network" large dark
             >Visit influencer network</v-btn
           >
@@ -83,8 +89,6 @@
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
-import VuetifyLogo from '~/components/VuetifyLogo.vue'
 import { mdiArrowLeftCircleOutline } from '@mdi/js'
 import { mdiArrowRightCircleOutline } from '@mdi/js'
 
@@ -363,105 +367,66 @@ export default {
       ],
     }
   },
-  components: {
-    Logo,
-    VuetifyLogo,
-  },
+  // components: {
+  //   Logo,
+  //   VuetifyLogo,
+  // },
 
-  mounted() {
-    this.animateOnScroll()
-  },
-  methods: {
-    animateOnScroll() {
-      const gsap = this.$gsap
-      // gsap.registerPlugin(this.$ScrollTrigger)
-      gsap.from('.agency-btn', {
-        x: -100,
-        ease: 'Power3.easeInOut',
-        duration: 2,
-        // scrollTrigger: {
-        //   trigger: '.landing-buttons',
-        // },
-      })
-      gsap.from('.creator-btn', {
-        // ScrollTrigger: {
-        //   trigger: '.landing-buttons',
-        // },
-        ease: 'Power3.easeInOut',
-        x: 100,
-        duration: 2,
-      })
-      gsap.from('.paragraph', {
-        // ScrollTrigger: {
-        //   trigger: '.landing-buttons',
-        // },
-        ease: 'Power3.easeInOut',
-        y: 50,
-        duration: 2,
-      })
-    },
-  },
+  // mounted() {
+  //   this.animateOnScroll()
+  // },
+  // methods: {
+  //   animateOnScroll() {
+  //     const gsap = this.$gsap
+  //     // gsap.registerPlugin(this.$ScrollTrigger)
+  //     gsap.from('.agency-btn', {
+  //       x: -100,
+  //       ease: 'Power3.easeInOut',
+  //       duration: 2,
+  //       // scrollTrigger: {
+  //       //   trigger: '.landing-buttons',
+  //       // },
+  //     })
+  //     gsap.from('.creator-btn', {
+  //       // ScrollTrigger: {
+  //       //   trigger: '.landing-buttons',
+  //       // },
+  //       ease: 'Power3.easeInOut',
+  //       x: 100,
+  //       duration: 2,
+  //     })
+  //     gsap.from('.paragraph', {
+  //       // ScrollTrigger: {
+  //       //   trigger: '.landing-buttons',
+  //       // },
+  //       ease: 'Power3.easeInOut',
+  //       y: 50,
+  //       duration: 2,
+  //     })
+  //   },
+  // },
 }
 </script>
 <style scoped>
-.landing-image {
-  background-image: url('/land.jpg');
-  background-position: center;
-  height: 100%;
-  background-repeat: no-repeat;
-  background-size: cover;
-  position: relative;
-}
-
-.btn-creator {
-  transition: all 0.5s 0.1s ease-in-out;
-  background-size: auto 200%;
-  box-shadow: 0 0 10px #9333ea;
-  background-image: linear-gradient(
-    to bottom,
-    #c084fc 0%,
-    #9333ea 51%,
-    #c084fc 100%
-  );
-}
-
-.btn-creator:hover {
-  background-position: center bottom; /* change the direction of the change here */
-  box-shadow: 0 0 15px #9333ea;
-}
-
-.btn-agency {
-  transition: all 0.5s ease-in-out 0.1s;
-  background-size: auto 200%;
-  box-shadow: 0 0 10px #6366f1;
-  background-image: linear-gradient(
-    to bottom,
-    #6366f1 0%,
-    #4f46e5 51%,
-    #6366f1 100%
-  );
-}
-
-.btn-agency:hover {
-  background-position: center bottom; /* change the direction of the change here */
-  box-shadow: 0 0 15px #6366f1;
-}
-
 .neon-creator {
-  color: #fff;
-  -webkit-animation: neon-creator 1.5s ease-in-out infinite alternate;
+  /* -webkit-animation: neon-creator 1.5s ease-in-out infinite alternate;
   -moz-animation: neon-creator 1.5s ease-in-out infinite alternate;
-  animation: neon-creator 1.5s ease-in-out infinite alternate;
+  animation: neon-creator 1.5s ease-in-out infinite alternate; */
+  color: #fff;
+  text-shadow: 0 0 5px #fff, 0 0 10px #9333ea, 0 0 20px #9333ea,
+    0 0 25px #d946ef;
 }
 
 .neon-agency {
-  color: #fff;
-  -webkit-animation: neon-agency 1.5s ease-in-out infinite alternate;
+  /* -webkit-animation: neon-agency 1.5s ease-in-out infinite alternate;
   -moz-animation: neon-agency 1.5s ease-in-out infinite alternate;
-  animation: neon-agency 1.5s ease-in-out infinite alternate;
+  animation: neon-agency 1.5s ease-in-out infinite alternate; */
+  color: #fff;
+  text-shadow: 0 0 5px #fff, 0 0 10px #6366f1, 0 0 20px #6366f1,
+    0 0 25px #60a5fa;
 }
 
-@keyframes neon-creator {
+/* @keyframes neon-creator {
   from {
     text-shadow: 0 0 5px #fff, 0 0 10px #9333ea, 0 0 20px #9333ea,
       0 0 25px #d946ef;
@@ -481,5 +446,5 @@ export default {
     text-shadow: 0 0 5px #fff, 0 0 7px #fff, 0 0 20px #60a5fa, 0 0 25px #60a5fa,
       0 0 30px #60a5fa;
   }
-}
+} */
 </style>

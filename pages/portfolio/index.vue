@@ -26,53 +26,50 @@
     </v-row> -->
 
   <v-container>
-    <h1 class="text-h4">Portfolios</h1>
-    <v-divider class="my-2"></v-divider>
     <div class="justify-center">
       <PortfolioBreadcrumb />
     </div>
     <v-divider class="my-2"></v-divider>
-    <br />
+    <h1 class="text-h4">Portfolios</h1>
+    <v-divider class="my-2"></v-divider>
 
     <v-row
-      class="mb-3"
+      class="mb-16"
       no-gutters
       v-for="(portfolio, i) in portfolios"
       :key="i"
     >
-      <v-col sm="5" md="6">
-        <v-card class="pa-2">
-          <h3>Name:</h3>
-          <h5 class="subtitle-2">{{ portfolio.name }}</h5>
-          <br />
-          <h3>Client Brief:</h3>
-          <h5>{{ portfolio.client_brief }}</h5>
-          <br />
-          <h3>Project Description:</h3>
-          <h5>{{ portfolio.project_description }}</h5>
-          <br />
-          <h3>Tools:</h3>
-          <v-chip>{{ portfolio.tools }}</v-chip>
-          <br />
-          <div class="text-center">
-            <v-btn
-              rounded
-              color="purple"
-              dark
-              outlined
-              :to="{
-                name: 'portfolio-slug',
-                params: {
-                  slug: portfolio.id,
-                },
-              }"
-            >
-              View
-            </v-btn>
-          </div>
-        </v-card>
+      <v-col cols="12" md="4">
+        <h2 class="text-overline">Name</h2>
+        <h3 class="text-body-1">{{ portfolio.name }}</h3>
+        <br />
+        <h2 class="text-overline">Client Brief</h2>
+        <h3 class="text-body-1">{{ portfolio.client_brief }}</h3>
+        <br />
+        <h2 class="text-overline">Project Description</h2>
+        <h3 class="text-body-1">{{ portfolio.project_description }}</h3>
+        <br />
+        <h2 class="text-overline">Tools</h2>
+        <v-chip>{{ portfolio.tools }}</v-chip>
+        <br />
+        <div class="text-center">
+          <v-btn
+            rounded
+            color="purple"
+            dark
+            outlined
+            :to="{
+              name: 'portfolio-slug',
+              params: {
+                slug: portfolio.id,
+              },
+            }"
+          >
+            View
+          </v-btn>
+        </div>
       </v-col>
-      <v-col sm="5" md="6">
+      <v-col cols="12" md="8" :order-md="i % 2 == 0 ? 'first' : null">
         <PortfolioImages v-bind:images="portfolio.images" />
       </v-col>
     </v-row>

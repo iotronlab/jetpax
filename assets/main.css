@@ -16,7 +16,7 @@
 }
 
 .btn-creator {
-  transition: all 0.5s 0.1s ease-in-out !important;
+  transition: 0.5s 0.1s ease-in-out !important;
   background-size: auto 200%;
   box-shadow: 0 0 10px #9333ea;
   background-image: linear-gradient(
@@ -30,4 +30,21 @@
 .btn-creator:hover {
   background-position: center bottom; /* change the direction of the change here */
   box-shadow: 0 0 15px #9333ea;
+}
+
+.btn-agency {
+  transition: 0.5s ease-in-out 0.1s !important;
+  background-size: auto 200%;
+  box-shadow: 0 0 10px #6366f1;
+  background-image: linear-gradient(
+    to bottom,
+    #6366f1 0%,
+    #4f46e5 51%,
+    #6366f1 100%
+  );
+}
+
+.btn-agency:hover {
+  background-position: center bottom; /* change the direction of the change here */
+  box-shadow: 0 0 15px #6366f1;
 }
