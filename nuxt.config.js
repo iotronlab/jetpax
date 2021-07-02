@@ -49,7 +49,7 @@ export default {
     '@nuxtjs/vuetify',
 
     // '@nuxtjs/google-fonts',
-    //  'nuxt-gsap-module',
+     'nuxt-gsap-module',
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -79,12 +79,12 @@ export default {
     },
   },
 
-  // gsap: {
-  //   extraPlugins: {
-  //     scrollTo: true,
-  //     scrollTrigger: true,
-  //   },
-  // },
+  gsap: {
+    extraPlugins: {
+      scrollTo: true,
+      scrollTrigger: true,
+    },
+  },
   // googleFonts: {
   //   families: {
   //     Ubuntu: true,

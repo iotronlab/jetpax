@@ -61,7 +61,7 @@
             :to="{
               name: 'portfolio-slug',
               params: {
-                slug: portfolio.id,
+                slug: portfolio.url,
               },
             }"
           >
