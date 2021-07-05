@@ -29,7 +29,7 @@
                   rounded
                 >
                   <v-icon large class="mr-2 neon-agency">
-                    {{ icons.rightArrow }}
+                    {{ icons.leftArrow }}
                   </v-icon>
                   for companies</v-btn
                 >
@@ -47,7 +47,7 @@
                 >
                   for creators
                   <v-icon large class="ml-2 neon-creator">
-                    {{ icons.leftArrow }}
+                    {{ icons.rightArrow }}
                   </v-icon>
                 </v-btn>
               </section>
@@ -66,8 +66,8 @@
             <span class="agency--text"> audiences</span> in the digital space.
             We are a holistic
             <span class="agency--text">digital marketing agency </span> covering
-            all your marketing and promotional needs. We at JETPAX aim to be the
-            biggest and best
+            all your marketing and promotional needs. At JETPAX, we aim to be
+            the biggest and best
             <span class="creator--text">community of influencers</span>.
           </h2>
           <v-btn class="mt-4 btn-creator" to="creative-network" large dark

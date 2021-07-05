@@ -1,35 +1,41 @@
 <template>
-  <div>
-    <v-container v-if="$fetchState.pending"></v-container>
-    <v-container v-else>
-      <h1 class="text-h4">Posts</h1>
+  <v-container>
+    <section v-if="$fetchState.pending"></section>
+    <section v-else>
+      <h1 class="text-h4">Case Study</h1>
       <v-divider class="my-2"></v-divider>
       <div>
-        <h2>Client Name:</h2>
-        <p class="text-justify">{{ portfolio.name }}</p>
-        <h2>Client Brief:</h2>
-        <p class="text-justify">{{ portfolio.client_brief }}</p>
-        <h2>Project Description:</h2>
-        <p class="text-justify">{{ portfolio.project_description }}</p>
+        <h2 class="text-overline text--secondary">Name</h2>
+        <h3 class="text-body-1">{{ portfolio.name }}</h3>
+        <br />
+        <h2 class="text-overline text--secondary">Client Brief</h2>
+        <h3 class="text-body-1">{{ portfolio.client_brief }}</h3>
+        <br />
+        <h2 class="text-overline text--secondary">Project Description</h2>
+        <h3 class="text-body-1">{{ portfolio.project_description }}</h3>
+        <br />
+        <h2 class="text-overline text--secondary">Tools</h2>
+        <v-row no-gutters v-if="portfolio.tools != null">
+          <v-chip v-for="(tool, i) in portfolio.tools" :key="i"></v-chip>
+        </v-row>
         <!-- <v-img height="500px" width="500px">
           {{ portfolio.images }}
         </v-img> -->
         <PortfolioImages v-bind:images="portfolio.images" />
       </div>
       <v-divider class="my-2"></v-divider>
-      <div v-for="(post, i) in portfolio.posts" :key="i" class="posts">
-        <h2>Post Name:</h2>
-        <p class="text-justify">{{ post.name }}</p>
-        <h2>Post Content:</h2>
-        <p class="text-justify">{{ post.content }}</p>
-        <!-- <v-img height="500px" width="500px">
-          {{ post.images }}
-        </v-img> -->
-        <hr />
-      </div>
-    </v-container>
+      <v-row no-gutters v-for="(post, i) in portfolio.posts" :key="i">
+        <v-col cols="12">
+          <h2 class="text-h4 text--secondary">{{ post.name }}</h2>
+
+          <h2 class="text-body-1">{{ post.content }}</h2>
+
+          <PortfolioImages v-bind:images="post.images"
+        /></v-col>
+      </v-row>
+    </section>
     <!-- <Footer /> -->
-  </div>
+  </v-container>
 </template>
 
 <script>

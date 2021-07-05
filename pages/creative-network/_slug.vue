@@ -1,54 +1,177 @@
 <template>
-  <!-- <v-container>{{creator}}</v-container> -->
-  <div>
-    <v-container v-if="$fetchState.pending"></v-container>
-    <v-container v-else>
-      <v-row justify="space-around">
-        <!-- {{creator}} -->
-        <v-card class="mt-5">
-          <v-img
-            height="200px"
-            src="https://cdn.pixabay.com/photo/2020/07/12/07/47/bee-5396362_1280.jpg"
-            alt="Image"
-          >
-            <v-card-title class="white--text mt-8">
-              <v-avatar size="56">
-                <img
-                  alt="user"
-                  src="https://cdn.pixabay.com/photo/2020/06/24/19/12/cabbage-5337431_1280.jpg"
-                />
-              </v-avatar>
-              <p class="ml-3">
-                {{ creator.name }}
-              </p>
-            </v-card-title>
-          </v-img>
-          <div class="font-weight-bold ml-5 mb-2 mt-3">
-            <v-icon large color="blue light-2"> mdi-email </v-icon
-            >{{ creator.email }}
-          </div>
-          <div class="font-weight-bold ml-5 mb-2 mt-2">
-            <v-icon large color="green light-2"> mdi-dialpad </v-icon>
-            {{ creator.contact }}
-          </div>
-          <div class="font-weight-bold ml-5 mb-2 mt-2">
-            <v-icon large color="white light-2"> mdi-translate </v-icon>
-            <span v-for="(lang, i) in creator.language" :key="i">
-              {{ lang }}</span
-            >
-          </div>
-          <div class="font-weight-bold ml-5 mb-2 mt-2">
-            <v-icon large color="white light-2"> mdi-trending-up </v-icon>
-            {{ creator.max_follower }}
-          </div>
-          <div class="font-weight-bold ml-5 mb-2 mt-2">
-            <v-icon large color="white light-2"> mdi-facebook </v-icon>
-            {{ creator.socials }}
-          </div>
-        </v-card>
-      </v-row>
-    </v-container>
-  </div>
+  <v-container>
+    <section v-if="$fetchState.pending"></section>
+    <section v-else>
+      <v-container fluid class="pa-0">
+        <v-img
+          :aspect-ratio="$vuetify.breakpoint.smAndUp ? 16 / 2.5 : 16 / 9"
+          :src="
+            creator.coverimg
+              ? creator.coverimg
+              : require('@/assets/img/default-cover.webp')
+          "
+          :lazy-src="require('@/assets/img/default-cover.webp')"
+        />
+
+        <v-row no-gutters>
+          <v-col cols="12" lg="4" md="4">
+            <v-container fluid class="d-flex justify-center">
+              <v-avatar size="200" class="mt-n16">
+                <v-img
+                  :src="
+                    creator.avatarimg
+                      ? creator.avatarimg
+                      : require('@/assets/img/profile.png')
+                  "
+                ></v-img
+              ></v-avatar>
+            </v-container>
+
+            <!-- <v-row no-gutters>
+                <v-col class="flex-grow-0 flex-shrink-1"
+                  ><v-card
+                    :img="
+                      creator.avatarimg
+                        ? creator.avatarimg
+                        : require('@/assets/img/default-profile.png')
+                    "
+                    width="150"
+                    height="150"
+                    color="accent"
+                    class="ml-lg-12 ml-4"
+                  ></v-card></v-col
+                ><v-col class="flex-grow-1 flex-shrink-0">
+                  <v-btn small class="ml-2" color="secondary" @click.prevent=""
+                    >Follow</v-btn
+                  >
+                  <v-container fluid>
+                    <h5 class="subtitle-1">{{ creator.display_name }}</h5>
+                    <h4 class="subtitle-2">{{ creator.views }} views</h4>
+
+                    <h4 class="subtitle-2">{{ creator.views }} subs</h4>
+                  </v-container></v-col
+                ></v-row
+              > -->
+          </v-col>
+          <v-col cols="12" lg="4" md="4" order-md="first">
+            <v-container fluid class="text-center text-lg-right">
+              <h1 class="title">
+                <!-- {{ creator.display_name }} -->
+
+                Artify Creator
+              </h1>
+              <h4 class="caption mb-2">
+                {{ creator.views }}10K subs | 10K views
+              </h4>
+              <v-row
+                no-gutters
+                align="center"
+                justify="center"
+                justify-lg="end"
+                class="mb-4"
+              >
+                <v-hover v-slot="{ hover }">
+                  <v-btn
+                    class="ml-2"
+                    color="primary"
+                    @click.prevent=""
+                    :outlined="hover ? false : true"
+                    rounded
+                  >
+                    <v-icon left>mdi-bell-plus-outline</v-icon> Subscribe</v-btn
+                  ></v-hover
+                >
+              </v-row>
+
+              <v-row
+                no-gutters
+                align="center"
+                justify="center"
+                justify-lg="end"
+              >
+                <v-hover v-slot="{ hover }">
+                  <v-btn
+                    fab
+                    dark
+                    small
+                    color="primary"
+                    :outlined="hover ? false : true"
+                    class="mx-1"
+                  >
+                    <v-icon>mdi-facebook</v-icon>
+                  </v-btn></v-hover
+                >
+                <v-hover v-slot="{ hover }">
+                  <v-btn
+                    fab
+                    dark
+                    small
+                    color="primary"
+                    :outlined="hover ? false : true"
+                    class="mx-1"
+                  >
+                    <v-icon>mdi-whatsapp</v-icon>
+                  </v-btn></v-hover
+                >
+                <v-hover v-slot="{ hover }">
+                  <v-btn
+                    fab
+                    dark
+                    small
+                    color="primary"
+                    :outlined="hover ? false : true"
+                    class="mx-1"
+                  >
+                    <v-icon>mdi-twitter</v-icon>
+                  </v-btn> </v-hover
+                ><v-hover v-slot="{ hover }">
+                  <v-btn
+                    fab
+                    dark
+                    small
+                    color="primary"
+                    :outlined="hover ? false : true"
+                    class="mx-1"
+                  >
+                    <v-icon>mdi-pinterest</v-icon>
+                  </v-btn> </v-hover
+                ><v-hover v-slot="{ hover }">
+                  <v-btn
+                    fab
+                    dark
+                    small
+                    color="primary"
+                    :outlined="hover ? false : true"
+                    class="ml-1"
+                  >
+                    <v-icon>mdi-email</v-icon>
+                  </v-btn>
+                </v-hover>
+              </v-row>
+            </v-container>
+          </v-col>
+
+          <v-col cols="12" lg="4" md="4">
+            <v-container fluid class="px-3">
+              <h5 class="caption text--secondary">About the Artist</h5>
+              <h4 class="caption">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore
+                quo dolores, earum maiores dolorem quod velit voluptas accusamus
+                nostrum minus quaerat dolor totam illum voluptate itaque
+                laboriosam distinctio! Asperiores, hic?
+                {{
+                  creator.bio
+                    ? creator.bio
+                    : 'This artist has not updated bio yet.'
+                }}
+              </h4>
+            </v-container>
+          </v-col>
+        </v-row>
+        <!-- <MiniProfile :creator="creator" /> --></v-container
+      >
+    </section>
+  </v-container>
 </template>
 <script>
 export default {

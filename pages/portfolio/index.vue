@@ -30,7 +30,7 @@
       <PortfolioBreadcrumb />
     </div>
     <v-divider class="my-2"></v-divider>
-    <h1 class="text-h4">Portfolios</h1>
+    <h1 class="text-h4">Case Studies</h1>
     <v-divider class="my-2"></v-divider>
 
     <v-row
@@ -40,24 +40,25 @@
       :key="i"
     >
       <v-col cols="12" md="4">
-        <h2 class="text-overline">Name</h2>
+        <h2 class="text-overline text--secondary">Name</h2>
         <h3 class="text-body-1">{{ portfolio.name }}</h3>
         <br />
-        <h2 class="text-overline">Client Brief</h2>
+        <h2 class="text-overline text--secondary">Client Brief</h2>
         <h3 class="text-body-1">{{ portfolio.client_brief }}</h3>
         <br />
-        <h2 class="text-overline">Project Description</h2>
+        <h2 class="text-overline text--secondary">Project Description</h2>
         <h3 class="text-body-1">{{ portfolio.project_description }}</h3>
         <br />
-        <h2 class="text-overline">Tools</h2>
-        <v-chip>{{ portfolio.tools }}</v-chip>
+        <h2 class="text-overline text--secondary">Tools</h2>
+        <v-row no-gutters v-if="portfolio.tools != null">
+          <v-chip v-for="(tool, i) in portfolio.tools" :key="i"></v-chip>
+        </v-row>
+
         <br />
         <div class="text-center">
           <v-btn
-            rounded
-            color="purple"
+            class="btn-agency"
             dark
-            outlined
             :to="{
               name: 'portfolio-slug',
               params: {
@@ -65,7 +66,7 @@
               },
             }"
           >
-            View
+            View Details
           </v-btn>
         </div>
       </v-col>

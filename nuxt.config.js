@@ -19,6 +19,15 @@ export default {
         content:
           'Digital Marketing Agency connecting brands and influencers/content-creators.',
       },
+      {
+        name: 'google-site-verification',
+        content: 'rrkzhm628_vVjbSOZXIrn1xiP2HGuwMn6QGwNNAyCVY',
+      },
+      {
+        name: 'keywords',
+        content: `digital marketing, influencer marketing, graphic designs, animations, seo, search engine marketing,
+          social media campaigns, social media marketing`,
+      },
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
@@ -34,9 +43,7 @@ export default {
   css: ['@/assets/main.css'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [
-    { src: '~/plugins/tawk.js', ssr: false }
-  ],
+  plugins: [{ src: '~/plugins/tawk.js', ssr: false }],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -49,7 +56,7 @@ export default {
     '@nuxtjs/vuetify',
 
     // '@nuxtjs/google-fonts',
-     'nuxt-gsap-module',
+    'nuxt-gsap-module',
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
