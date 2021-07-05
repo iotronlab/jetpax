@@ -107,7 +107,7 @@ export default {
           to: '/',
         },
         {
-          text: 'Portfolio',
+          text: 'Portfolios',
           disabled: false,
           to: 'portfolio',
         },

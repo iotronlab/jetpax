@@ -5,6 +5,10 @@
     </section>
 
     <section v-else>
+      <div class="justify-center">
+        <Breadcrumb :breadcrumbItems="breadcrumbItems" />
+      </div>
+      <v-divider class="my-2"></v-divider>
       <h1 class="text-h4">Case Study</h1>
       <v-divider class="my-2"></v-divider>
       <div>
@@ -46,6 +50,23 @@ export default {
   data() {
     return {
       portfolio: null,
+      breadcrumbItems: [
+        {
+          text: 'Home',
+          disabled: false,
+          to: '/',
+        },
+        {
+          text: 'Portfolios',
+          disabled: false,
+          to: '/portfolio',
+        },
+        {
+          text: this.$route.params.slug,
+          disabled: true,
+          to: '',
+        },
+      ],
     }
   },
 
