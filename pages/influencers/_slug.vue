@@ -1,7 +1,13 @@
 <template>
   <v-container>
-    <section v-if="$fetchState.pending"></section>
+    <section v-if="$fetchState.pending">
+      <Loading />
+    </section>
     <section v-else>
+      <div class="justify-center">
+        <Breadcrumb :breadcrumbItems="breadcrumbItems" />
+      </div>
+      <v-divider class="my-2"></v-divider>
       <v-container fluid class="pa-0">
         <v-img
           :aspect-ratio="$vuetify.breakpoint.smAndUp ? 16 / 2.5 : 16 / 9"
@@ -98,7 +104,7 @@
                     :outlined="hover ? false : true"
                     class="mx-1"
                   >
-                    <v-icon>mdi-facebook</v-icon>
+                    <v-icon>{{ icons.facebook }}</v-icon>
                   </v-btn></v-hover
                 >
                 <v-hover v-slot="{ hover }">
@@ -110,7 +116,7 @@
                     :outlined="hover ? false : true"
                     class="mx-1"
                   >
-                    <v-icon>mdi-whatsapp</v-icon>
+                    <v-icon>{{ icons.whatsapp }}</v-icon>
                   </v-btn></v-hover
                 >
                 <v-hover v-slot="{ hover }">
@@ -122,7 +128,7 @@
                     :outlined="hover ? false : true"
                     class="mx-1"
                   >
-                    <v-icon>mdi-twitter</v-icon>
+                    <v-icon>{{ icons.twitter }}</v-icon>
                   </v-btn> </v-hover
                 ><v-hover v-slot="{ hover }">
                   <v-btn
@@ -133,7 +139,7 @@
                     :outlined="hover ? false : true"
                     class="mx-1"
                   >
-                    <v-icon>mdi-pinterest</v-icon>
+                    <v-icon>{{ icons.pinterest }}</v-icon>
                   </v-btn> </v-hover
                 ><v-hover v-slot="{ hover }">
                   <v-btn
@@ -144,7 +150,7 @@
                     :outlined="hover ? false : true"
                     class="ml-1"
                   >
-                    <v-icon>mdi-email</v-icon>
+                    <v-icon>{{ icons.email }}</v-icon>
                   </v-btn>
                 </v-hover>
               </v-row>
@@ -174,10 +180,52 @@
   </v-container>
 </template>
 <script>
+import { mdiEmail } from '@mdi/js'
+import { mdiWhatsapp } from '@mdi/js'
+import { mdiFacebook } from '@mdi/js'
+import { mdiInstagram } from '@mdi/js'
+import { mdiYoutube } from '@mdi/js'
+import { mdiLinkedin } from '@mdi/js'
+import { mdiPinterest } from '@mdi/js'
+import { mdiTwitter } from '@mdi/js'
+
 export default {
   data() {
     return {
       creator: null,
+      breadcrumbItems: [
+        {
+          text: 'Home',
+          disabled: false,
+          to: '/',
+        },
+        {
+          text: 'Influencers',
+          disabled: false,
+          to: '/influencers',
+        },
+        {
+          text: this.$route.params.slug,
+          disabled: true,
+          to: '',
+        },
+      ],
+      icons: {
+        email: mdiEmail,
+        whatsapp: mdiWhatsapp,
+        facebook: mdiFacebook,
+        youtube: mdiYoutube,
+        instagram: mdiInstagram,
+        linkedin: mdiLinkedin,
+        pinterest: mdiPinterest,
+        twitter: mdiTwitter,
+      },
+      socialLinks: [
+        { icon: mdiFacebook, url: '' },
+        { icon: mdiYoutube, url: '' },
+        { icon: mdiInstagram, url: '' },
+        { icon: mdiLinkedin, url: 'Privacy Policy' },
+      ],
     }
   },
 

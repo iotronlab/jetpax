@@ -50,9 +50,14 @@
         <nuxt-link :to="{ name: 'index' }">
           <v-img src="/logo.webp" max-width="220" contain class="mr-2"
         /></nuxt-link>
-        <v-btn text v-for="(item, i) in navItems" :key="i" color="creator">{{
-          item.title
-        }}</v-btn>
+        <v-btn
+          text
+          v-for="(item, i) in navItems"
+          :key="i"
+          color="creator"
+          :to="item.to"
+          >{{ item.title }}</v-btn
+        >
       </v-row>
       <v-btn icon class="ml-auto" aria-label="call"
         ><v-icon>{{ icons.call }}</v-icon></v-btn
@@ -123,7 +128,7 @@ export default {
         {
           icon: 'mdi-chart-bubble',
           title: 'About US',
-          to: '/aboutus#about',
+          to: '/aboutus',
         },
         {
           icon: 'mdi-chart-bubble',

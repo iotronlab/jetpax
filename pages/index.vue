@@ -70,7 +70,7 @@
             the biggest and best
             <span class="creator--text">community of influencers</span>.
           </h2>
-          <v-btn class="mt-4 btn-creator" to="creative-network" large dark
+          <v-btn class="mt-4 btn-creator" to="influencers" large dark
             >Visit influencer network</v-btn
           >
         </v-col></v-row

@@ -1,6 +1,9 @@
 <template>
   <v-container>
-    <section v-if="$fetchState.pending"></section>
+    <section v-if="$fetchState.pending">
+      <Loading />
+    </section>
+
     <section v-else>
       <h1 class="text-h4">Case Study</h1>
       <v-divider class="my-2"></v-divider>

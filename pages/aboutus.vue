@@ -97,5 +97,22 @@
 </template>
 
 <script>
-export default {}
+export default {
+  // methods: {
+  //   aboutScroll() {
+  //     const gsap = this.$gsap
+  //     gsap.to(window, {
+  //       duration: 1,
+  //       scrollTo: { y: '#about', offsetY: 70 },
+  //     })
+  //   },
+  //   contactScroll() {
+  //     const gsap = this.$gsap
+  //     gsap.to(window, {
+  //       duration: 1,
+  //       scrollTo: { y: '#contact', offsetY: 70 },
+  //     })
+  //   },
+  // },
+}
 </script>

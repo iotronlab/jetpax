@@ -82,17 +82,17 @@ export default {
         {
           icon: 'mdi-chart-bubble',
           title: 'Portfolio',
-          to: '/inspire',
+          to: '/portfolio',
         },
         {
           icon: 'mdi-chart-bubble',
           title: 'About US',
-          to: '/inspire',
+          to: '/aboutus',
         },
         {
           icon: 'mdi-chart-bubble',
           title: 'Contact US',
-          to: '/inspire',
+          to: '/aboutus#contact',
         },
       ],
       helpLinks: [
