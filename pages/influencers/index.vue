@@ -101,7 +101,7 @@ export default {
         {
           text: 'Influencers',
           disabled: false,
-          to: 'influencers',
+          to: '/influencers',
         },
       ],
       items: [

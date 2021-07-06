@@ -59,7 +59,7 @@ export default {
         {
           text: 'Portfolios',
           disabled: false,
-          to: '/portfolio',
+          to: 'portfolio',
         },
         {
           text: this.$route.params.slug,

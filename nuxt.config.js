@@ -43,7 +43,12 @@ export default {
   css: ['@/assets/main.css'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [{ src: '~/plugins/tawk.js', ssr: false }],
+  plugins: [
+  {
+    src: '~/plugins/tawk.js', ssr: false
+  },
+  { src: '~/plugins/vee-validate.js', ssr: true },
+  ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -57,6 +62,22 @@ export default {
 
     // '@nuxtjs/google-fonts',
     'nuxt-gsap-module',
+
+  //   ...[
+  //     "nuxt-social-meta",
+  //     {
+  //       url: "Site url",
+  //       title: "Title",
+  //       site_name: "Site name",
+  //       description: "Site description",
+  //       img: "icon.png",
+  //       img_size: { width: "15", height: "15" },
+  //       locale: "en_US",
+  //       twitter: "@user",
+  //       twitter_card: "summary_large_image",
+  //       theme_color: "#theme-color",
+  //     },
+  //   ],
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -69,6 +90,9 @@ export default {
     '@nuxt/content',
     '@nuxtjs/sitemap',
     '@nuxtjs/component-cache',
+    '@nuxtjs/recaptcha',
+    // '@nuxtjs/vee-validate'
+
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
@@ -92,6 +116,14 @@ export default {
       scrollTrigger: true,
     },
   },
+
+  recaptcha: {
+    hideBadge: true, // Hide badge element (v3 & v2 via size=invisible)
+    siteKey: '6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI',    // Site key for requests
+    version: 2,     // Version
+    size: 'normal'        // Size: 'compact', 'normal', 'invisible' (v2)
+  },
+
   // googleFonts: {
   //   families: {
   //     Ubuntu: true,
@@ -154,6 +186,7 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
+    transpile: ['vee-validate'],
     extractCSS: true,
     optimization: {
       splitChunks: {
@@ -186,5 +219,6 @@ export default {
         return [preset]
       },
     },
-  },
+  },  
 }
+

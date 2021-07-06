@@ -23,64 +23,128 @@
       <v-col cols="12" lg="7">
         <v-container>
           <v-col cols="12" lg="10">
-            <v-text-field
-              label="Name"
-              v-model="form.name"
-              placeholder="Enter your name"
-              filled
-              shaped
-            ></v-text-field>
-            <v-text-field
-              label="Email"
-              v-model="form.email"
-              placeholder="Enter your email"
-              filled
-              shaped
-            ></v-text-field>
+            <validation-provider
+              v-slot="{ errors }"
+              name="Name"
+              rules="required|max:15"
+            >
+              <v-text-field
+                label="Name"
+                v-model="form.name"
+                placeholder="Enter your name"
+                :counter="15"
+                :error-messages="errors"
+                filled
+                shaped
+              ></v-text-field>
+            </validation-provider>
 
-            <v-text-field
-              label="Business Name"
-              v-model="form.business_name"
-              placeholder="Enter your business name"
-              filled
-              shaped
-            ></v-text-field>
-            <v-text-field
-              label="Business Link"
-              v-model="form.business_link"
-              placeholder="Enter your business link"
-              filled
-              shaped
-            ></v-text-field>
-            <v-text-field
-              label="Contact"
-              v-model="form.contact"
-              placeholder="Enter your contact"
-              filled
-              shaped
-            ></v-text-field>
-            <v-text-field
-              label="Service"
-              v-model="form.service"
-              placeholder="Enter your service"
-              filled
-              shaped
-            ></v-text-field>
-            <v-text-field
-              label="Budget"
-              v-model="form.budget"
-              placeholder="Enter your budget"
-              filled
-              shaped
-            ></v-text-field>
-            <v-textarea
-              label="Details"
-              v-model="form.details"
-              placeholder="Enter your details"
-              filled
-              shaped
-            ></v-textarea>
+            <validation-provider
+              v-slot="{ errors }"
+              name="email"
+              rules="required|email"
+            >
+              <v-text-field
+                label="Email"
+                v-model="form.email"
+                placeholder="Enter your email"
+                :error-messages="errors"
+                filled
+                shaped
+              ></v-text-field>
+            </validation-provider>
 
+            <validation-provider
+              v-slot="{ errors }"
+              name="businessName"
+              rules="required"
+            >
+              <v-text-field
+                label="Business Name"
+                v-model="form.business_name"
+                placeholder="Enter your business name"
+                :error-messages="errors"
+                filled
+                shaped
+              ></v-text-field>
+            </validation-provider>
+
+            <validation-provider
+              v-slot="{ errors }"
+              name="businessLink"
+              rules="required"
+            >
+              <v-text-field
+                label="Business Link"
+                v-model="form.business_link"
+                placeholder="Enter your business link"
+                :error-messages="errors"
+                filled
+                shaped
+              ></v-text-field>
+            </validation-provider>
+
+            <validation-provider
+              v-slot="{ errors }"
+              name="phoneNumber"
+              rules="required"
+            >
+              <v-text-field
+                label="Contact"
+                v-model="form.contact"
+                placeholder="Enter your contact"
+                :error-messages="errors"
+                filled
+                shaped
+              ></v-text-field>
+            </validation-provider>
+
+            <validation-provider
+              v-slot="{ errors }"
+              name="Service"
+              rules="required"
+            >
+              <v-text-field
+                label="Service"
+                v-model="form.service"
+                placeholder="Enter your service"
+                :error-messages="errors"
+                filled
+                shaped
+              ></v-text-field>
+            </validation-provider>
+
+            <validation-provider
+              v-slot="{ errors }"
+              name="Budget"
+              rules="required"
+            >
+              <v-text-field
+                label="Budget"
+                v-model="form.budget"
+                placeholder="Enter your budget"
+                :error-messages="errors"
+                filled
+                shaped
+              ></v-text-field>
+            </validation-provider>
+
+            <validation-provider
+              v-slot="{ errors }"
+              name="Details"
+              rules="required|min:25"
+            >
+              <v-textarea
+                label="Details"
+                v-model="form.details"
+                placeholder="Enter your details"
+                :counter="25"
+                :error-messages="errors"
+                filled
+                shaped
+              ></v-textarea>
+            </validation-provider>
+            <recaptcha /><br />
             <v-btn block @click="submit"> Save </v-btn>
             <v-row no-gutters></v-row>
             {{ errorMessage }}</v-col
@@ -122,6 +186,18 @@ export default {
           console.log(err)
           this.errorMessage = err.response.data
         })
+
+      try {
+        const token = await this.$recaptcha.getResponse()
+        console.log('ReCaptcha token:', token)
+
+        // send token to server alongside your form data
+
+        // at the end you need to reset recaptcha
+        await this.$recaptcha.reset()
+      } catch (error) {
+        console.log('Login error:', error)
+      }
     },
   },
 }
