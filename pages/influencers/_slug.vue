@@ -202,7 +202,8 @@ export default {
         {
           text: 'Influencers',
           disabled: false,
-          to: 'influencers',
+          to: '/influencers',
+          exact: true,
         },
         {
           text: this.$route.params.slug,
