@@ -56,7 +56,13 @@
           <br />
           <h2 class="text-overline text--secondary">Tools</h2>
           <v-row no-gutters v-if="portfolio.tools != null">
-            <v-chip v-for="(tool, i) in portfolio.tools" :key="i"></v-chip>
+            <v-chip
+              v-for="(tool, i) in portfolio.tools"
+              :key="i"
+              class="ma-1"
+              outlined
+              >{{ tool }}</v-chip
+            >
           </v-row>
 
           <br />

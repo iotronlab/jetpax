@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid>
+  <v-container fluid class="pa-0">
     <!-- Nav bar right -->
     <section v-if="$fetchState.pending">
       <Loading />

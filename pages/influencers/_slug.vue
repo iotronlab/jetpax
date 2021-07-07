@@ -4,10 +4,6 @@
       <Loading />
     </section>
     <section v-else>
-      <div class="justify-center">
-        <Breadcrumb :breadcrumbItems="breadcrumbItems" />
-      </div>
-      <v-divider class="my-2"></v-divider>
       <v-container fluid class="pa-0">
         <v-img
           :aspect-ratio="$vuetify.breakpoint.smAndUp ? 16 / 2.5 : 16 / 9"
@@ -61,14 +57,12 @@
           </v-col>
           <v-col cols="12" lg="4" md="4" order-md="first">
             <v-container fluid class="text-center text-lg-right">
+              <Breadcrumb :breadcrumbItems="breadcrumbItems" />
               <h1 class="title">
                 <!-- {{ creator.display_name }} -->
 
-                Artify Creator
+                {{ creator.name }}
               </h1>
-              <h4 class="caption mb-2">
-                {{ creator.views }}10K subs | 10K views
-              </h4>
               <v-row
                 no-gutters
                 align="center"
@@ -78,18 +72,32 @@
               >
                 <v-hover v-slot="{ hover }">
                   <v-btn
-                    class="ml-2"
-                    color="primary"
+                    class="mt-2"
+                    color="agency"
                     @click.prevent=""
                     :outlined="hover ? false : true"
                     rounded
                   >
-                    <v-icon left>mdi-bell-plus-outline</v-icon> Subscribe</v-btn
+                    <v-icon left>{{ icons.email }}</v-icon
+                    >Enquire</v-btn
                   ></v-hover
                 >
               </v-row>
 
-              <v-row
+              <h4 class="caption">
+                Categories
+                <v-chip
+                  small
+                  label
+                  class="ma-1"
+                  v-for="(category, i) in creator.categories"
+                  :key="i"
+                >
+                  {{ category }}</v-chip
+                >
+              </h4>
+
+              <!-- <v-row
                 no-gutters
                 align="center"
                 justify="center"
@@ -153,13 +161,43 @@
                     <v-icon>{{ icons.email }}</v-icon>
                   </v-btn>
                 </v-hover>
-              </v-row>
+              </v-row> -->
             </v-container>
           </v-col>
 
           <v-col cols="12" lg="4" md="4">
             <v-container fluid class="px-3">
-              <h5 class="caption text--secondary">About the Artist</h5>
+              <h4 class="caption mt-2">
+                Socials
+                <v-chip
+                  class="ma-1"
+                  v-for="(social, i) in creator.socials"
+                  :key="i"
+                  :color="icons[social.type].color"
+                  dark
+                >
+                  <v-icon left>
+                    {{ icons[social.type].link }}
+                  </v-icon>
+                  <!-- <v-icon left v-if="social.type == 'Instagram'"> mdi-instagram </v-icon> -->
+                  {{ social.type }}
+                  {{ formattedFollows(social.followers) }}</v-chip
+                >
+              </h4>
+              <h4 class="caption mt-2">
+                Languages
+                <v-chip
+                  small
+                  label
+                  outlined
+                  class="ma-1"
+                  v-for="(lang, i) in creator.languages"
+                  :key="i"
+                >
+                  {{ lang }}</v-chip
+                >
+              </h4>
+              <h5 class="caption text--secondary mt-4">About the Artist</h5>
               <h4 class="caption">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore
                 quo dolores, earum maiores dolorem quod velit voluptas accusamus
@@ -214,12 +252,13 @@ export default {
       icons: {
         email: mdiEmail,
         whatsapp: mdiWhatsapp,
-        facebook: mdiFacebook,
-        youtube: mdiYoutube,
-        instagram: mdiInstagram,
         linkedin: mdiLinkedin,
         pinterest: mdiPinterest,
-        twitter: mdiTwitter,
+
+        Facebook: { link: mdiFacebook, color: '#1877f2' },
+        Youtube: { link: mdiYoutube, color: '#FF0000' },
+        Instagram: { link: mdiInstagram, color: '#7232bd' },
+        Twitter: { link: mdiTwitter, color: '#1DA1F2' },
       },
       socialLinks: [
         { icon: mdiFacebook, url: '' },
@@ -229,7 +268,14 @@ export default {
       ],
     }
   },
-
+  computed: {
+    formattedFollows() {
+      return (num) =>
+        Math.abs(num) > 999
+          ? Math.sign(num) * (Math.abs(num) / 1000).toFixed(1) + 'k'
+          : Math.sign(num) * Math.abs(num)
+    },
+  },
   async fetch() {
     await this.$axios
       .$get(`creators/${this.$route.params.slug}`)

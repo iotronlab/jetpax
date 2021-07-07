@@ -37,6 +37,13 @@ export default {
         crossorigin: '',
       },
     ],
+    // script: [
+    //   {
+    //     hid: 'tawk.to',
+    //     src: 'https://embed.tawk.to/60dddb4965b7290ac638eb61/1f9ha16m2',
+    //     defer: true,
+    //   },
+    // ],
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
@@ -150,25 +157,14 @@ export default {
       options: {
         customProperties: false,
         variations: false,
-        themeCache: {
-          get: (key) => localStorage.getItem(key),
-          set: (key, value) => localStorage.setItem(key, value),
-        },
+        // themeCache: {
+        //   get: (key) => localStorage.getItem(key),
+        //   set: (key, value) => localStorage.setItem(key, value),
+        // },
         minifyTheme,
       },
 
       themes: {
-        dark: {
-          primary: '#6366F1',
-          // accent: colors.grey.darken3,
-          secondary: '#9333EA',
-          // info: colors.teal.lighten1,
-          // warning: colors.amber.base,
-          // error: colors.deepOrange.accent4,
-          // success: colors.green.accent3,
-          agency: '#60A5FA',
-          creator: '#C084FC',
-        },
         light: {
           primary: '#6366F1',
           //   accent: colors.grey.darken3,
@@ -180,6 +176,17 @@ export default {
           agency: '#4F46E5',
           creator: '#9333EA',
         },
+        dark: {
+          primary: '#6366F1',
+          // accent: colors.grey.darken3,
+          secondary: '#9333EA',
+          // info: colors.teal.lighten1,
+          // warning: colors.amber.base,
+          // error: colors.deepOrange.accent4,
+          // success: colors.green.accent3,
+          agency: '#60A5FA',
+          creator: '#C084FC',
+        },
       },
     },
   },
@@ -187,7 +194,9 @@ export default {
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
     transpile: ['vee-validate'],
-    extractCSS: true,
+    extractCSS: {
+      ignoreOrder: true,
+    },
     optimization: {
       splitChunks: {
         cacheGroups: {
@@ -219,6 +228,6 @@ export default {
         return [preset]
       },
     },
-  },  
+  },
 }
 
