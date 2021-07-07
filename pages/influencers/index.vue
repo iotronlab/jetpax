@@ -16,6 +16,7 @@
         <v-toolbar class="mb-2" rounded="lg">
           <v-select
             class="mr-2"
+            :append-icon="dropdownIcon"
             v-for="(filter, i) in filterMenu"
             :key="i"
             :label="filter.admin_name"
@@ -85,6 +86,8 @@
 </template>
 
 <script>
+import { mdiMenuDown } from '@mdi/js'
+
 export default {
   data() {
     return {
@@ -92,6 +95,7 @@ export default {
       filterMenu: {},
       filterParams: {},
       creators: {},
+      dropdownIcon: mdiMenuDown,
       breadcrumbItems: [
         {
           text: 'Home',

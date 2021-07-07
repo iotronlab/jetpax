@@ -83,6 +83,8 @@
         <v-pagination
           v-model="pageData.current_page"
           :length="pageData.last_page"
+          :next-icon="nextArrow"
+          :prev-icon="prevArrow"
         ></v-pagination>
       </div>
     </section>
@@ -95,11 +97,16 @@
     </v-col> -->
 </template>
 <script>
+import { mdiArrowRight } from '@mdi/js'
+import { mdiArrowLeft } from '@mdi/js'
+
 export default {
   data() {
     return {
       portfolios: {},
       pageData: {},
+      nextArrow: mdiArrowRight,
+      prevArrow: mdiArrowLeft,
       breadcrumbItems: [
         {
           text: 'Home',
