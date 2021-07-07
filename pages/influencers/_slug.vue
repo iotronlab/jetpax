@@ -71,17 +71,53 @@
                 class="mb-4"
               >
                 <v-hover v-slot="{ hover }">
-                  <v-btn
-                    class="mt-2"
-                    color="agency"
-                    @click.prevent=""
-                    :outlined="hover ? false : true"
-                    rounded
-                  >
-                    <v-icon left>{{ icons.email }}</v-icon
-                    >Enquire</v-btn
-                  ></v-hover
-                >
+                  <v-dialog v-model="dialog" width="500">
+                    <template v-slot:activator="{ on, attrs }">
+                      <v-btn
+                        class="mt-2"
+                        color="agency"
+                        @click.prevent=""
+                        :outlined="hover ? false : true"
+                        v-bind="attrs"
+                        v-on="on"
+                        rounded
+                      >
+                        <v-icon left>{{ icons.email }}</v-icon
+                        >Enquire</v-btn
+                      >
+                    </template>
+                    <v-card>
+                      <v-card-title class="text-h5 grey lighten-2">
+                        Enquire
+                      </v-card-title>
+                      <v-divider class="my-2"></v-divider>
+                      <v-text-field
+                        v-model="name"
+                        label="Name"
+                        class="pa-2 ma-2"
+                      ></v-text-field>
+                      <v-text-field
+                        v-model="email"
+                        label="Email"
+                        class="pa-2 ma-2"
+                      ></v-text-field>
+                      <v-textarea
+                        v-model="description"
+                        label="Description"
+                        class="pa-2 ma-2"
+                      ></v-textarea>
+
+                      <v-divider></v-divider>
+
+                      <v-card-actions>
+                        <v-spacer></v-spacer>
+                        <v-btn color="primary" text @click="dialog = false">
+                          send
+                        </v-btn>
+                      </v-card-actions>
+                    </v-card>
+                  </v-dialog>
+                </v-hover>
               </v-row>
 
               <h4 class="caption">
@@ -230,6 +266,7 @@ import { mdiTwitter } from '@mdi/js'
 export default {
   data() {
     return {
+      dialog: false,
       creator: null,
       breadcrumbItems: [
         {
