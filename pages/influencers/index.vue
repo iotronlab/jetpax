@@ -81,12 +81,22 @@
         <v-btn block @click="submit" color="red"> Filter </v-btn>
         <v-btn class="mt-4" block @click="reset" color="red"> Reset </v-btn>
       </v-navigation-drawer>
+      <div class="text-center">
+        <v-pagination
+          v-model="pageData.current_page"
+          :length="pageData.last_page"
+          :next-icon="nextArrow"
+          :prev-icon="prevArrow"
+        ></v-pagination>
+      </div>
     </section>
   </v-container>
 </template>
 
 <script>
 import { mdiMenuDown } from '@mdi/js'
+import { mdiArrowRight } from '@mdi/js'
+import { mdiArrowLeft } from '@mdi/js'
 
 export default {
   data() {
@@ -95,7 +105,10 @@ export default {
       filterMenu: {},
       filterParams: {},
       creators: {},
+      pageData: {},
       dropdownIcon: mdiMenuDown,
+      nextArrow: mdiArrowRight,
+      prevArrow: mdiArrowLeft,
       breadcrumbItems: [
         {
           text: 'Home',
@@ -144,6 +157,15 @@ export default {
       .$get('filter')
       .then((ress) => {
         this.filterMenu = ress.data
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+
+    await this.$axios
+      .$get('creators')
+      .then((res) => {
+        this.pageData = res.meta
       })
       .catch((err) => {
         console.log(err)

@@ -70,21 +70,21 @@ export default {
     // '@nuxtjs/google-fonts',
     'nuxt-gsap-module',
 
-  //   ...[
-  //     "nuxt-social-meta",
-  //     {
-  //       url: "Site url",
-  //       title: "Title",
-  //       site_name: "Site name",
-  //       description: "Site description",
-  //       img: "icon.png",
-  //       img_size: { width: "15", height: "15" },
-  //       locale: "en_US",
-  //       twitter: "@user",
-  //       twitter_card: "summary_large_image",
-  //       theme_color: "#theme-color",
-  //     },
-  //   ],
+    [
+      "nuxt-social-meta",
+      {
+        url: "Site url",
+        title: "Title",
+        site_name: "Site name",
+        description: "Site description",
+        img: "icon.png",
+        img_size: { width: "15", height: "15" },
+        locale: "en_US",
+        twitter: "@user",
+        twitter_card: "summary_large_image",
+        theme_color: "#theme-color",
+      },
+    ],
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
