@@ -15,6 +15,12 @@
           :lazy-src="require('@/assets/img/default-cover.webp')"
         />
 
+        <!-- <ul v-for="(service, i) in creator.services" :key="i">
+          <li>
+            {{ service.name }}
+          </li>
+        </ul> -->
+
         <v-row no-gutters>
           <v-col cols="12" lg="4" md="4">
             <v-container fluid class="d-flex justify-center">
@@ -88,23 +94,71 @@
                     </template>
                     <v-card>
                       <v-card-title class="text-h5 grey lighten-2">
-                        Enquire
+                        Enquire About
                       </v-card-title>
                       <v-divider class="my-2"></v-divider>
                       <v-text-field
                         v-model="name"
                         label="Name"
                         class="pa-2 ma-2"
+                        filled
+                        shaped
+                      ></v-text-field>
+                      <v-text-field
+                        v-model="contact"
+                        label="Contact"
+                        class="pa-2 ma-2"
+                        filled
+                        shaped
+                      ></v-text-field>
+                      <v-text-field
+                        v-model="businessName"
+                        label="Business Name"
+                        class="pa-2 ma-2"
+                        filled
+                        shaped
                       ></v-text-field>
                       <v-text-field
                         v-model="email"
                         label="Email"
                         class="pa-2 ma-2"
+                        filled
+                        shaped
                       ></v-text-field>
+
+                      <v-select
+                        :items="creator.services"
+                        v-model="serviceSelect"
+                        item-text="name"
+                        item-value="name"
+                        label="Services"
+                        dense
+                        :append-icon="dropdownIcon"
+                        class="pa-2 ma-2"
+                        filled
+                        deletable-chips="true"
+                        :clear-icon="removeIcon"
+                        clearable
+                        shaped
+                        chips
+                        multiple
+                      >
+                        <template v-slot:selection="{ item }">
+                          <v-chip
+                            close
+                            :close-icon="removeIcon"
+                            @click:close="remove(item)"
+                          >
+                            {{ item.name }}
+                          </v-chip>
+                        </template>
+                      </v-select>
                       <v-textarea
                         v-model="description"
                         label="Description"
                         class="pa-2 ma-2"
+                        filled
+                        shaped
                       ></v-textarea>
 
                       <v-divider></v-divider>
@@ -250,6 +304,18 @@
         </v-row>
         <!-- <MiniProfile :creator="creator" /> --></v-container
       >
+      <h1>{{ creator.name }}<span>'s Services</span></h1>
+      <v-card v-for="(service, i) in creator.services" :key="i">
+        <v-card-title class="text-h5"> {{ service.name }}</v-card-title>
+
+        <v-card-subtitle
+          >Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore quo
+          dolores, earum maiores dolorem quod velit voluptas accusamus nostrum
+          minus quaerat dolor totam illum voluptate itaque laboriosam
+          distinctio! Asperiores, hic?</v-card-subtitle
+        >
+        <v-divider></v-divider>
+      </v-card>
     </section>
   </v-container>
 </template>
@@ -262,11 +328,16 @@ import { mdiYoutube } from '@mdi/js'
 import { mdiLinkedin } from '@mdi/js'
 import { mdiPinterest } from '@mdi/js'
 import { mdiTwitter } from '@mdi/js'
+import { mdiMenuDown } from '@mdi/js'
+import { mdiClose } from '@mdi/js'
 
 export default {
   data() {
     return {
       dialog: false,
+      dropdownIcon: mdiMenuDown,
+      removeIcon: mdiClose,
+      serviceSelect: [],
       creator: null,
       breadcrumbItems: [
         {
@@ -305,6 +376,14 @@ export default {
       ],
     }
   },
+
+  methods: {
+    remove(item) {
+      this.serviceSelect.splice(this.serviceSelect.indexOf(item))
+      this.serviceSelect = [...this.serviceSelect]
+    },
+  },
+
   computed: {
     formattedFollows() {
       return (num) =>
