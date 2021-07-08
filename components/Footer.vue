@@ -1,7 +1,7 @@
 <template>
   <v-container fluid>
     <v-row no-gutters justify="center" align="center">
-      <v-col cols="12" lg="4">
+      <v-col cols="12" lg="3">
         <NuxtLink to="/"
           ><v-img
             src="/logo.webp"
@@ -12,6 +12,7 @@
         /></NuxtLink>
         <section class="text-center">
           <v-divider class="my-2" />
+          <v-btn class="ma-2">Join our network</v-btn>
           <p class="caption">find us on</p>
           <v-row no-gutters justify="space-around" class="my-4">
             <v-btn v-for="(social, i) in socialLinks" :key="i" icon
@@ -30,11 +31,24 @@
           </v-row>
         </section></v-col
       >
-      <v-col cols="12" lg="4">
-        <p v-for="(link, i) in navItems" :key="i">
-          <v-icon>{{ link.icon }}</v-icon>
+      <v-col cols="12" lg="3">
+        <p v-for="(link, i) in navItems" :key="i" class="subtitle-2 mb-1">
           <NuxtLink :to="link.to">{{ link.title }}</NuxtLink>
         </p></v-col
+      >
+      <v-col cols="12" lg="3">
+        <section v-for="(link, i) in helpLinks" :key="i">
+          <p class="caption mb-1">
+            <NuxtLink :to="link.to">{{ link.title }}</NuxtLink>
+          </p>
+          <p
+            v-for="(subLink, i) in link.children"
+            :key="i"
+            class="subtitle-2 mb-1"
+          >
+            <NuxtLink :to="link.to">{{ subLink.title }}</NuxtLink>
+          </p>
+        </section></v-col
       >
     </v-row>
     <v-row no-gutters>
@@ -64,20 +78,11 @@ export default {
           title: 'Home',
           to: '/',
         },
+
         {
           icon: 'mdi-chart-bubble',
-          title: 'Services',
-          to: '/inspire',
-          children: [
-            {
-              title: 'Services for Companies',
-              to: '/inspire',
-            },
-            {
-              title: 'Services for Creators',
-              to: '/inspire',
-            },
-          ],
+          title: 'Influencers',
+          to: '/influencers',
         },
         {
           icon: 'mdi-chart-bubble',
@@ -96,16 +101,47 @@ export default {
         },
       ],
       helpLinks: [
-        { name: 'FAQ', url: '/help-centre#FAQ' },
-        { name: 'Payment', url: '/help-centre#Payment' },
-        { name: 'Shipping', url: '/help-centre#Shipping' },
         {
-          name: 'Cancellation and Return',
-          url: '/help-centre#Cancellation%20and%20Return',
+          title: 'Services for Companies',
+          to: '/inspire',
+          children: [
+            {
+              title: 'Service A',
+              to: '/inspire',
+            },
+            {
+              title: 'Service B',
+              to: '/inspire',
+            },
+          ],
         },
         {
-          name: 'Report Infringement',
-          url: '/help-centre#Report%20Infringement',
+          title: 'Services for Influencers',
+          to: '/inspire',
+          children: [
+            {
+              title: 'Service A',
+              to: '/inspire',
+            },
+            {
+              title: 'Service B',
+              to: '/inspire',
+            },
+          ],
+        },
+        {
+          title: 'knowlegde base',
+          to: '/inspire',
+          children: [
+            {
+              title: 'FAQ for companies',
+              to: '/inspire',
+            },
+            {
+              title: 'FAQ for Influencers',
+              to: '/inspire',
+            },
+          ],
         },
       ],
       socialLinks: [
@@ -120,8 +156,7 @@ export default {
 </script>
 
 <style scoped>
-.links-button {
-  color: white;
-  text-decoration: none;
+p a:hover {
+  color: #6ee7b7;
 }
 </style>

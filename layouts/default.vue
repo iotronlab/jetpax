@@ -107,6 +107,11 @@ export default {
         },
         {
           icon: 'mdi-chart-bubble',
+          title: 'Influencers',
+          to: '/influencers',
+        },
+        {
+          icon: 'mdi-chart-bubble',
           title: 'Services',
           to: '/inspire',
           children: [
@@ -120,6 +125,7 @@ export default {
             },
           ],
         },
+
         {
           icon: 'mdi-chart-bubble',
           title: 'Portfolio',
