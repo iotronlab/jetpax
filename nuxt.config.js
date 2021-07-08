@@ -51,10 +51,10 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-  // {
-  //   src: '~/plugins/tawk.js', ssr: false
-  // },
-  { src: '~/plugins/vee-validate.js', ssr: true },
+    // {
+    //   src: '~/plugins/tawk.js', ssr: false
+    // },
+    { src: '~/plugins/vee-validate.js', ssr: true },
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -71,18 +71,18 @@ export default {
     'nuxt-gsap-module',
 
     [
-      "nuxt-social-meta",
+      'nuxt-social-meta',
       {
-        url: "Site url",
-        title: "Title",
-        site_name: "Site name",
-        description: "Site description",
-        img: "icon.png",
-        img_size: { width: "15", height: "15" },
-        locale: "en_US",
-        twitter: "@user",
-        twitter_card: "summary_large_image",
-        theme_color: "#theme-color",
+        url: 'Site url',
+        title: 'Title',
+        site_name: 'Site name',
+        description: 'Site description',
+        img: 'icon.png',
+        img_size: { width: '15', height: '15' },
+        locale: 'en_US',
+        twitter: '@user',
+        twitter_card: 'summary_large_image',
+        theme_color: '#theme-color',
       },
     ],
   ],
@@ -99,7 +99,6 @@ export default {
     '@nuxtjs/component-cache',
     '@nuxtjs/recaptcha',
     // '@nuxtjs/vee-validate'
-
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
@@ -126,9 +125,9 @@ export default {
 
   recaptcha: {
     hideBadge: true, // Hide badge element (v3 & v2 via size=invisible)
-    siteKey: '6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI',    // Site key for requests
-    version: 2,     // Version
-    size: 'normal'        // Size: 'compact', 'normal', 'invisible' (v2)
+    siteKey: '6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI', // Site key for requests
+    version: 2, // Version
+    size: 'normal', // Size: 'compact', 'normal', 'invisible' (v2)
   },
 
   // googleFonts: {
@@ -184,6 +183,7 @@ export default {
           // warning: colors.amber.base,
           // error: colors.deepOrange.accent4,
           // success: colors.green.accent3,
+          anchor: '#60A5FA',
           agency: '#60A5FA',
           creator: '#C084FC',
         },
@@ -230,4 +230,3 @@ export default {
     },
   },
 }
-
