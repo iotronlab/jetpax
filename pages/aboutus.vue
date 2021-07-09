@@ -63,33 +63,116 @@
     <h1 class="text-h4">Contact Us</h1>
     <v-divider class="my-2"></v-divider>
     <form>
-      <v-text-field
-        v-model="name"
-        :error-messages="nameErrors"
-        :counter="10"
-        label="Name"
-        required
-      ></v-text-field>
-      <v-text-field
-        v-model="email"
-        :error-messages="emailErrors"
-        label="E-mail"
-        required
-      ></v-text-field>
-      <v-select
-        v-model="select"
-        :items="items"
-        :error-messages="selectErrors"
-        label="Item"
-        required
-      ></v-select>
+      <validation-provider
+        v-slot="{ errors }"
+        name="Name"
+        rules="required|max:15"
+      >
+        <v-text-field
+          v-model="name"
+          :error-messages="errors"
+          :counter="15"
+          label="Name"
+          required
+          shaped
+          filled
+        ></v-text-field>
+      </validation-provider>
+
+      <validation-provider
+        v-slot="{ errors }"
+        name="email"
+        rules="required|email"
+      >
+        <v-text-field
+          v-model="email"
+          :error-messages="errors"
+          label="E-mail"
+          required
+          shaped
+          filled
+        ></v-text-field>
+      </validation-provider>
+
+      <validation-provider
+        v-slot="{ errors }"
+        name="businessName"
+        rules="required"
+      >
+        <v-text-field
+          label="Business Name"
+          v-model="business_name"
+          placeholder="Enter your business name"
+          :error-messages="errors"
+          filled
+          shaped
+        ></v-text-field>
+      </validation-provider>
+
+      <validation-provider
+        v-slot="{ errors }"
+        name="businessLink"
+        rules="required"
+      >
+        <v-text-field
+          label="Business Link"
+          v-model="business_link"
+          placeholder="Enter your business link"
+          :error-messages="errors"
+          filled
+          shaped
+        ></v-text-field>
+      </validation-provider>
+
+      <validation-provider v-slot="{ errors }" name="Contact" rules="required">
+        <v-text-field
+          label="Contact"
+          v-model="contact"
+          placeholder="Enter your contact"
+          :error-messages="errors"
+          filled
+          shaped
+        ></v-text-field>
+      </validation-provider>
+
+      <validation-provider v-slot="{ errors }" name="Service" rules="required">
+        <v-text-field
+          label="Service"
+          v-model="service"
+          placeholder="Enter your service"
+          :error-messages="errors"
+          filled
+          shaped
+        ></v-text-field>
+      </validation-provider>
+
+      <validation-provider
+        v-slot="{ errors }"
+        name="Details"
+        rules="required|min:25"
+      >
+        <v-textarea
+          v-model="description"
+          label="Description"
+          :error-messages="errors"
+          :counter="25"
+          required
+          shaped
+          filled
+        ></v-textarea>
+      </validation-provider>
+
       <v-checkbox
         v-model="checkbox"
         :error-messages="checkboxErrors"
         label="Do you agree?"
+        :on-icon="checkedIcon"
+        :off-icon="unCheckedIcon"
         required
+        shaped
+        filled
       ></v-checkbox>
-
+      <recaptcha /><br />
       <v-btn class="mr-4" @click="submit"> submit </v-btn>
       <v-btn @click="clear"> clear </v-btn>
     </form>
@@ -97,7 +180,15 @@
 </template>
 
 <script>
+import { mdiCheckboxMarked, mdiCheckboxBlankOutline } from '@mdi/js'
+
 export default {
+  data() {
+    return {
+      checkedIcon: mdiCheckboxMarked,
+      unCheckedIcon: mdiCheckboxBlankOutline,
+    }
+  },
   // methods: {
   //   aboutScroll() {
   //     const gsap = this.$gsap

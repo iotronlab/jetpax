@@ -34,7 +34,8 @@
         <!-- <v-img height="500px" width="500px">
           {{ portfolio.images }}
         </v-img> -->
-        <PortfolioImages v-bind:images="portfolio.images" />
+        <!-- <PortfolioImages v-bind:images="portfolio.images" /> -->
+        <PostImages v-bind:images="portfolio.images" />
       </div>
       <v-divider class="my-2"></v-divider>
       <v-row no-gutters v-for="(post, i) in portfolio.posts" :key="i">
@@ -43,8 +44,10 @@
 
           <h2 class="text-body-1">{{ post.content }}</h2>
 
-          <PortfolioImages v-bind:images="post.images"
-        /></v-col>
+          <!-- <PortfolioImages v-bind:images="post.images" /> -->
+          <PostImages v-bind:images="post.images" />
+          <v-divider class="my-2"></v-divider>
+        </v-col>
       </v-row>
     </section>
     <!-- <Footer /> -->
