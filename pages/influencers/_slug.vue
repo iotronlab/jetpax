@@ -29,7 +29,7 @@
                   :src="
                     creator.avatarimg
                       ? creator.avatarimg
-                      : require('@/assets/img/profile.png')
+                      : require('@/assets/img/landing-image.webp')
                   "
                 ></v-img
               ></v-avatar>
@@ -64,11 +64,12 @@
           <v-col cols="12" lg="4" md="4" order-md="first">
             <v-container fluid class="text-center text-lg-right">
               <Breadcrumb :breadcrumbItems="breadcrumbItems" />
-              <h1 class="title">
+              <h1 class="text-h5">
                 <!-- {{ creator.display_name }} -->
 
                 {{ creator.name }}
               </h1>
+              <h2 class="overline">@{{ creator.url }}</h2>
               <v-row
                 no-gutters
                 align="center"
@@ -76,40 +77,35 @@
                 justify-lg="end"
                 class="mb-4"
               >
-                <v-hover v-slot="{ hover }">
-                  <v-dialog v-model="dialog" width="500">
-                    <template v-slot:activator="{ on, attrs }">
-                      <v-btn
-                        class="mt-2"
-                        color="agency"
-                        @click.prevent=""
-                        :outlined="hover ? false : true"
-                        v-bind="attrs"
-                        v-on="on"
-                        rounded
-                      >
-                        <v-icon left>{{ icons.email }}</v-icon
-                        >Enquire</v-btn
-                      >
-                    </template>
-                    <CreatorEnquire :enquire="creator.services" />
-                  </v-dialog>
-                </v-hover>
+                <v-dialog v-model="dialog" width="500">
+                  <template v-slot:activator="{ on, attrs }">
+                    <v-btn
+                      class="mt-2 btn-creator"
+                      color="agency"
+                      @click.prevent=""
+                      v-bind="attrs"
+                      v-on="on"
+                      rounded
+                      dark
+                    >
+                      <v-icon left>{{ icons.email }}</v-icon
+                      >Enquire</v-btn
+                    >
+                  </template>
+                  <CreatorEnquire :enquire="creator.services" />
+                </v-dialog>
               </v-row>
 
-              <h4 class="caption">
-                Categories
-                <v-chip
-                  small
-                  label
-                  class="ma-1"
-                  v-for="(category, i) in creator.categories"
-                  :key="i"
-                >
-                  {{ category }}</v-chip
-                >
-              </h4>
-
+              <span class="overline">Categories</span>
+              <v-chip
+                small
+                label
+                class="ma-1"
+                v-for="(category, i) in creator.categories"
+                :key="i"
+              >
+                {{ category }}</v-chip
+              >
               <!-- <v-row
                 no-gutters
                 align="center"
@@ -180,38 +176,40 @@
 
           <v-col cols="12" lg="4" md="4">
             <v-container fluid class="px-3">
-              <h4 class="caption mt-2">
-                Socials
-                <v-chip
-                  class="ma-1"
-                  v-for="(social, i) in creator.socials"
-                  :key="i"
-                  :color="icons[social.type].color"
-                  dark
-                >
-                  <v-icon left>
+              <span class="overline">Socials</span>
+              <v-chip
+                class="ma-1"
+                v-for="(social, i) in creator.socials"
+                :key="i"
+                pill
+              >
+                <!-- <v-icon left :color="icons[social.type].color">
+                    {{ icons[social.type].link }}
+                  </v-icon> -->
+                <v-avatar left :color="icons[social.type].color">
+                  <v-icon dark>
                     {{ icons[social.type].link }}
                   </v-icon>
-                  <!-- <v-icon left v-if="social.type == 'Instagram'"> mdi-instagram </v-icon> -->
-                  {{ social.type }}
-                  {{ formattedFollows(social.followers) }}</v-chip
-                >
-              </h4>
-              <h4 class="caption mt-2">
-                Languages
+                </v-avatar>
+                <!-- <v-icon left v-if="social.type == 'Instagram'"> mdi-instagram </v-icon> -->
+                {{ social.type }}
+                {{ formattedFollows(social.followers) }}</v-chip
+              >
+              <v-row no-gutters align="center" class="mt-2">
+                <span class="overline">Languages</span>
                 <v-chip
                   small
                   label
                   outlined
-                  class="ma-1"
+                  class="mx-1"
                   v-for="(lang, i) in creator.languages"
                   :key="i"
                 >
                   {{ lang }}</v-chip
-                >
-              </h4>
-              <h5 class="caption text--secondary mt-4">About the Artist</h5>
-              <h4 class="caption">
+                ></v-row
+              >
+              <h5 class="overline creator--text mt-2">About the Creator</h5>
+              <h4 class="caption text--secondary">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore
                 quo dolores, earum maiores dolorem quod velit voluptas accusamus
                 nostrum minus quaerat dolor totam illum voluptate itaque

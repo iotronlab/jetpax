@@ -9,14 +9,18 @@
       sm="6"
     >
       <v-card class="ma-1" rounded="lg">
-        <v-card-title class="text-h5"> {{ service.name }}</v-card-title>
+        <v-card-title class="text-h6 creator--text">
+          {{ service.name }}</v-card-title
+        >
 
         <v-card-subtitle
           >Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore quo
           dolores, earum maiores dolorem quod velit voluptas accusamus nostrum
           minus quaerat dolor totam illum voluptate itaque laboriosam
           distinctio! Asperiores, hic?
-          <h2 class="text-h6">₹ {{ service.rate }}</h2></v-card-subtitle
+          <h2 class="mt-2 text--primary">
+            ₹ {{ service.rate }}
+          </h2></v-card-subtitle
         >
       </v-card></v-col
     >

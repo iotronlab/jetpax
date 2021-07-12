@@ -3,7 +3,7 @@
     <h1 class="text-h4">
       <!-- <span class="light-green--text">ideas</span>
             <span class="">that</span><br /> -->
-      Why choose <span class="font-weight-bold"> JETPAX</span>?
+      Why choose <span class="font-weight-bold">JETPAX</span>?
     </h1>
     <h4 class="subtitle-1">
       Here, at JETPAX, we help you monetize your social media followers, by

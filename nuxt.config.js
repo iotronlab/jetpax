@@ -176,7 +176,7 @@ export default {
           creator: '#9333EA',
         },
         dark: {
-          primary: '#6366F1',
+          primary: '#60A5FA',
           // accent: colors.grey.darken3,
           secondary: '#9333EA',
           // info: colors.teal.lighten1,

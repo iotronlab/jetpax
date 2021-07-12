@@ -38,15 +38,10 @@
       <h1 class="text-h4">Case Studies</h1>
       <v-divider class="my-2"></v-divider>
 
-      <v-row
-        class="mb-16"
-        no-gutters
-        v-for="(portfolio, i) in portfolios"
-        :key="i"
-      >
-        <v-col cols="12" md="4">
-          <h2 class="text-overline text--secondary">Name</h2>
-          <h3 class="text-body-1">{{ portfolio.name }}</h3>
+      <v-row no-gutters v-for="(portfolio, i) in portfolios" :key="i">
+        <v-col cols="12" lg="5" class="pa-2">
+          <h2 class="text-overline text--secondary">Project</h2>
+          <h3 class="font-weight-thin">{{ portfolio.name }}</h3>
           <br />
           <h2 class="text-overline text--secondary">Client Brief</h2>
           <h3 class="text-body-1">{{ portfolio.client_brief }}</h3>
@@ -68,7 +63,7 @@
           <br />
           <div class="text-center">
             <v-btn
-              class="btn-agency"
+              class="btn-agency mb-4"
               dark
               :to="{
                 name: 'portfolio-slug',
@@ -81,7 +76,7 @@
             </v-btn>
           </div>
         </v-col>
-        <v-col cols="12" md="8" :order-md="i % 2 == 0 ? 'first' : null">
+        <v-col cols="12" lg="7" :order-lg="i % 2 == 0 ? 'first' : null">
           <PortfolioImages v-bind:images="portfolio.images" />
         </v-col>
       </v-row>
