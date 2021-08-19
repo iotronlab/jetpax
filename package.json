@@ -18,7 +18,7 @@
     "@nuxtjs/component-cache": "^1.1.6",
     "@nuxtjs/pwa": "^3.3.5",
     "@nuxtjs/sitemap": "^2.4.0",
-    "core-js": "^3.16.1",
+    "core-js": "^3.16.2",
     "minify-css-string": "^1.0.0",
     "nuxt": "^2.15.5",
     "vee-validate": "^3.4.11"
