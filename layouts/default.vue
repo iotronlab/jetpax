@@ -1,6 +1,13 @@
 <template>
   <v-app dark>
-    <v-navigation-drawer v-model="drawer" temporary fixed app>
+    <v-navigation-drawer
+      v-model="drawer"
+      fixed
+      app
+      temporary
+      dark
+      color="rgba(0, 0, 0, 0.6)"
+    >
       <v-list-item>
         <v-switch
           v-model="$vuetify.theme.dark"
@@ -54,7 +61,7 @@
           text
           v-for="(item, i) in navItems"
           :key="i"
-          color="creator"
+          color="secondary"
           :to="item.to"
           >{{ item.title }}</v-btn
         >

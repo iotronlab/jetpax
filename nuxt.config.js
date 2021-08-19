@@ -165,27 +165,29 @@ export default {
 
       themes: {
         light: {
-          primary: '#6366F1',
+          primary: '#4F46E5',
           //   accent: colors.grey.darken3,
           secondary: '#9333EA',
           // info: colors.teal.lighten1,
           // warning: colors.amber.base,
           // error: colors.deepOrange.accent4,
           // success: colors.green.accent3,
-          agency: '#4F46E5',
-          creator: '#9333EA',
+
+          agency: '#93C5FD',
+          creator: '#C4B5FD',
         },
         dark: {
           primary: '#60A5FA',
           // accent: colors.grey.darken3,
-          secondary: '#9333EA',
+          secondary: '#C084FC',
           // info: colors.teal.lighten1,
           // warning: colors.amber.base,
           // error: colors.deepOrange.accent4,
           // success: colors.green.accent3,
+
           anchor: '#60A5FA',
-          agency: '#60A5FA',
-          creator: '#C084FC',
+          agency: '#93C5FD',
+          creator: '#C4B5FD',
         },
       },
     },

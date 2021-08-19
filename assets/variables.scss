@@ -4,7 +4,12 @@
 // $font-size-root: 20px;
 $color-pack: false;
 $heading-font-family: 'Abril Fatface', cursive;
-$body-font-family: 'Montserrat', sans-serif;
-// $material-light: (
-//   'background': #fcf2fc,
-// );
+// $body-font-family: 'Montserrat', sans-serif;
+$material-light: (
+  'background': #f1eff3,
+  //'cards': #f4f4f5,
+);
+$material-dark: (
+  'background': #181b24,
+);
+$card-elevation: 0;

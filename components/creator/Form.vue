@@ -1,16 +1,5 @@
 <template>
   <v-container>
-    <h1 class="text-h4">
-      <!-- <span class="light-green--text">ideas</span>
-            <span class="">that</span><br /> -->
-      Why choose <span class="font-weight-bold">JETPAX</span>?
-    </h1>
-    <h4 class="subtitle-1">
-      Here, at JETPAX, we help you monetize your social media followers, by
-      connecting you with various brands and their marketing campaigns. We also
-      handle all your business needs, so that you are free to do what you do
-      best, that is, create awesome content.
-    </h4>
     <h1 class="text-h4">Contact <span class="font-weight-bold">US.</span></h1>
 
     <v-row no-gutters>
@@ -128,10 +117,12 @@
         <v-btn block @click="submit"> Save </v-btn>
         {{ errorMessage }}</v-col
       >
-      <v-col cols="12" lg="5"><v-img src="/contact-us.png"></v-img></v-col>
-    </v-row>
-  </v-container>
+      <v-col cols="12" lg="5"
+        ><v-img src="/contact-us.png"></v-img
+      ></v-col> </v-row
+  ></v-container>
 </template>
+
 
 <script>
 import { required, digits, max, regex } from 'vee-validate/dist/rules'
@@ -147,6 +138,7 @@ export default {
     ValidationProvider,
     ValidationObserver,
   },
+
   data() {
     return {
       form: {

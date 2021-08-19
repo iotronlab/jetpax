@@ -23,7 +23,7 @@
                 <v-btn
                   class="ma-2 btn-agency"
                   large
-                  to="companies"
+                  to="brands"
                   alt="for companies"
                   dark
                   rounded
@@ -60,15 +60,15 @@
       <v-row no-gutters justify="center" class="mb-6">
         <v-col cols="10" class="mt-6 text-center">
           <h2 class="text-button" style="line-height: 150%">
-            With a hunger and thirst for innovation, our agency paves the way
-            <span class="agency--text"> brands</span> and
-            <span class="creator--text">influencers</span> connect with their
-            <span class="agency--text"> audiences</span> in the digital space.
-            We are a holistic
-            <span class="agency--text">digital marketing agency </span> covering
-            all your marketing and promotional needs. At JETPAX, we aim to be
-            the biggest and best
-            <span class="creator--text">community of influencers</span>.
+            Our agency paves the way
+            <span class="primary--text">brands</span> and
+            <span class="secondary--text">influencers</span> connect with their
+            <span class="primary--text">audiences</span> in the digital space
+            with a hunger and thirst for innovation. We are a holistic
+            <span class="primary--text">digital marketing agency</span> covering
+            all your marketing and promotional needs. We at JETPAX aim to be the
+            biggest and best
+            <span class="secondary--text">community of influencers.</span>
           </h2>
           <v-btn class="mt-4 btn-creator" to="influencers" large dark
             >Visit influencer network</v-btn
