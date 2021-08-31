@@ -45,11 +45,11 @@
       </v-row>
     </v-item-group>
     <v-divider class="my-2"></v-divider>
-    <v-window v-model="selectedService" reverse>
+    <v-window v-model="selectedService">
       <v-window-item
         v-for="(service, i) in services"
         :key="i"
-        reverse-transition="slide-y-transition"
+        transition="slide-y-transition"
       >
         <LazyBrandsService :service="service" :order="i" />
       </v-window-item>

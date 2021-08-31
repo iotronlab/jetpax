@@ -1,7 +1,7 @@
 <template>
   <section>
-    <v-row no-gutters class="mt-2">
-      <v-col v-for="(image, i) in imageList" :key="i" cols="12" lg="6">
+    <v-row no-gutters class="ma-2" justify="center">
+      <v-col v-for="(image, i) in imageList" :key="i" cols="12">
         <v-img :src="image.url" alt="Post Image"></v-img
       ></v-col>
     </v-row>

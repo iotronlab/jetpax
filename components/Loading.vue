@@ -1,22 +1,20 @@
 <template>
-  <v-layout align-center justify-center column>
-    <v-flex row align-center>
-      <v-progress-circular
-        indeterminate
-        :width="7"
-        :size="70"
-        color="primary"
-      ></v-progress-circular>
-    </v-flex>
-  </v-layout>
+  <v-container fluid class="text-center">
+    <v-progress-circular
+      indeterminate
+      size="64"
+      color="primary"
+    ></v-progress-circular
+    ><br /><br />
+    {{ message || 'Loading data...' }}
+  </v-container>
 </template>
 
 <script>
-export default {}
-</script>
-
-<style scoped>
-.v-progress-circular {
-  margin: 50px;
+export default {
+  props: {
+    message: String,
+    required: false,
+  },
 }
-</style>
+</script>

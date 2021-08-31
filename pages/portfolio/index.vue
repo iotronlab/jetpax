@@ -27,7 +27,7 @@
 
   <v-container>
     <section v-if="$fetchState.pending">
-      <Loading />
+      <Loading message="fetching portfolio..." />
     </section>
 
     <section v-else>
@@ -35,21 +35,107 @@
         <Breadcrumb :breadcrumbItems="breadcrumbItems" />
       </div>
       <v-divider class="my-2"></v-divider>
-      <h1 class="text-h4">Case Studies</h1>
-      <v-divider class="my-2"></v-divider>
+      <v-item-group mandatory v-model="portfolioOption">
+        <v-row no-gutters justify="center">
+          <v-col
+            v-for="(option, i) in portfolioOptions"
+            :key="i"
+            cols="6"
+            md="3"
+            class="pa-2"
+          >
+            <v-item v-slot="{ active, toggle }">
+              <v-sheet
+                @click="toggle"
+                rounded="xl"
+                class="py-2 text-center text-uppercase"
+                :class="active ? 'nucard' : null"
+                color="transparent"
+                height="100%"
+              >
+                <div v-if="active" class="flex-grow-1">
+                  <h2
+                    class="text-button ma-1 primary--text"
+                    style="letter-spacing: 0.1rem !important; line-height: 95%"
+                  >
+                    <strong>{{ option.heading }}</strong>
+                  </h2>
+                  <v-btn text disabled class="caption">viewing</v-btn>
+                </div>
 
-      <v-row no-gutters v-for="(portfolio, i) in portfolios" :key="i">
-        <v-col cols="12" lg="5" class="pa-2">
-          <h2 class="text-overline text--secondary">Project</h2>
-          <h3 class="font-weight-thin">{{ portfolio.name }}</h3>
-          <br />
-          <h2 class="text-overline text--secondary">Client Brief</h2>
-          <h3 class="text-body-1">{{ portfolio.client_brief }}</h3>
-          <br />
-          <h2 class="text-overline text--secondary">Project Description</h2>
-          <h3 class="text-body-1">{{ portfolio.project_description }}</h3>
-          <br />
-          <h2 class="text-overline text--secondary">Tools</h2>
+                <div v-if="!active" class="flex-grow-1">
+                  <h2
+                    class="text-button ma-1"
+                    style="letter-spacing: 0.1rem !important; line-height: 95%"
+                  >
+                    {{ option.heading }}
+                  </h2>
+                  <v-btn text class="caption">view</v-btn>
+                </div>
+              </v-sheet>
+            </v-item>
+          </v-col>
+        </v-row>
+      </v-item-group>
+
+      <v-divider class="my-2"></v-divider>
+      <v-window v-model="portfolioOption">
+        <v-window-item
+          :key="portfolioOptions[0]"
+          transition="slide-y-transition"
+        >
+          <v-row no-gutters justify="center">
+            <v-col
+              cols="12"
+              lg="5"
+              class="pa-2"
+              v-for="(portfolio, i) in portfolios"
+              :key="i"
+            >
+              <v-img
+                :src="
+                  portfolio.images[0] != null
+                    ? portfolio.images[0].url
+                    : require('@/assets/img/logo.webp')
+                "
+                contain
+                :aspect-ratio="4 / 3"
+                gradient="to top, rgba(0,0,0,.1), rgba(0,0,0,.7)"
+                class="rounded-lg"
+                dark
+              >
+                <v-container>
+                  <v-row no-gutters justify="space-between" class="ma-1">
+                    <h2 class="text-h5">
+                      <span class="text-overline">Project</span><br />{{
+                        portfolio.name
+                      }}
+                    </h2>
+                    <v-btn
+                      class="btn-agency mb-4"
+                      dark
+                      small
+                      rounded
+                      :to="{
+                        name: 'portfolio-slug',
+                        params: {
+                          slug: portfolio.url,
+                        },
+                      }"
+                    >
+                      View
+                    </v-btn>
+                  </v-row>
+
+                  <!-- <h2 class="text-overline text--secondary">Client Brief</h2>
+            <h3 class="text-body-1">{{ portfolio.client_brief }}</h3>
+            <br />
+            <h2 class="text-overline text--secondary">Project Description</h2>
+            <h3 class="text-body-1">{{ portfolio.project_description }}</h3>
+            <br /> -->
+                </v-container>
+              </v-img>
+              <!-- <h2 class="text-overline text--secondary">Tools</h2>
           <v-row no-gutters v-if="portfolio.tools != null">
             <v-chip
               v-for="(tool, i) in portfolio.tools"
@@ -58,36 +144,25 @@
               outlined
               >{{ tool }}</v-chip
             >
+          </v-row> -->
+              <!-- <PortfolioImages v-bind:images="portfolio.images" /> -->
+            </v-col>
           </v-row>
-
-          <br />
           <div class="text-center">
-            <v-btn
-              class="btn-agency mb-4"
-              dark
-              :to="{
-                name: 'portfolio-slug',
-                params: {
-                  slug: portfolio.url,
-                },
-              }"
-            >
-              View Details
-            </v-btn>
+            <v-pagination
+              v-model="pageData.current_page"
+              :length="pageData.last_page"
+              :next-icon="nextArrow"
+              :prev-icon="prevArrow"
+            ></v-pagination>
           </div>
-        </v-col>
-        <v-col cols="12" lg="7" :order-lg="i % 2 == 0 ? 'first' : null">
-          <PortfolioImages v-bind:images="portfolio.images" />
-        </v-col>
-      </v-row>
-      <div class="text-center">
-        <v-pagination
-          v-model="pageData.current_page"
-          :length="pageData.last_page"
-          :next-icon="nextArrow"
-          :prev-icon="prevArrow"
-        ></v-pagination>
-      </div>
+        </v-window-item>
+        <v-window-item
+          :key="portfolioOptions[1]"
+          transition="slide-y-transition"
+          >Hi</v-window-item
+        >
+      </v-window>
     </section>
   </v-container>
   <!-- <v-col cols="12" lg="10" class="mx-auto">
@@ -117,6 +192,11 @@ export default {
   },
   data() {
     return {
+      portfolioOption: null,
+      portfolioOptions: [
+        { heading: 'Case Studies' },
+        { heading: 'Sketchbook' },
+      ],
       portfolios: {},
       pageData: {},
       nextArrow: mdiArrowRight,
@@ -128,7 +208,7 @@ export default {
           to: '/',
         },
         {
-          text: 'Portfolios',
+          text: 'Portfolio',
           disabled: false,
           to: 'portfolio',
         },

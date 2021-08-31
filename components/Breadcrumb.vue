@@ -4,7 +4,7 @@
       :items="breadcrumbItems"
       divider="/"
       large
-      class="justify-center"
+      class="justify-center text-caption font-weight-bold"
     ></v-breadcrumbs>
   </div>
 </template>
