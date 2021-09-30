@@ -1,12 +1,18 @@
 <template>
-  <v-container>
-    <v-row no-gutters justify="center" v-for="(video, i) in videos" :key="i">
+  <v-container fluid class="pa-0">
+    <v-row
+      no-gutters
+      justify="center"
+      v-for="(video, i) in videos"
+      :key="i"
+      class="py-2"
+    >
       <iframe
         id="ytplayer"
         type="text/html"
         :src="video.url + '?modestbranding'"
         width="100%"
-        height="720"
+        :height="$vuetify.breakpoint.smAndDown ? 360 : 720"
         frameborder="0"
       ></iframe>
     </v-row>
@@ -18,7 +24,7 @@ export default {
   props: {
     videos: {
       type: Array,
-      required: true,
+      required: false,
     },
   },
 }

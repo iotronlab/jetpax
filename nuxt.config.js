@@ -98,12 +98,22 @@ export default {
     '@nuxtjs/sitemap',
     '@nuxtjs/component-cache',
     '@nuxtjs/recaptcha',
+    '@nuxtjs/sentry',
     // '@nuxtjs/vee-validate'
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
-    baseURL: 'http://localhost:8000/api',
+    baseURL: 'https://api.jetpax.org/api',
+  },
+  sentry: {
+    dsn: 'https://8a3da31355f84d64b5141de16f078df6@o1014613.ingest.sentry.io/5979822', // Enter your project's DSN here
+    // Additional Module Options go here
+    // https://sentry.nuxtjs.org/sentry/options
+    config: {
+      // Add native Sentry config here
+      // https://docs.sentry.io/platforms/javascript/guides/vue/configuration/options/
+    },
   },
   sitemap: {
     hostname: 'https://www.jetpax.org',

@@ -5,14 +5,14 @@
     </div>
     <v-divider class="my-2"></v-divider>
 
-    <LazyPortfolioCaseStudy />
+    <LazyPortfolioSketchBook />
   </v-container>
 </template>
 <script>
 export default {
   head() {
     return {
-      title: 'Portfolio',
+      title: 'SketchBook',
       // meta: [
       //   // hid is used as unique identifier. Do not use `vmid` for it as it will not work
       //   {
@@ -32,9 +32,9 @@ export default {
           to: '/',
         },
         {
-          text: 'Portfolio',
-          disabled: true,
-          to: 'portfolio',
+          text: 'Sketchbook',
+          disabled: false,
+          to: '/sketchbook',
         },
       ],
     }
