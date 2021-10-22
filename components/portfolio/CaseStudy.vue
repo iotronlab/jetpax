@@ -74,8 +74,7 @@
 </template>
 
 <script>
-import { mdiArrowRight } from '@mdi/js'
-import { mdiArrowLeft } from '@mdi/js'
+import { mdiArrowRight, mdiArrowLeft } from '@mdi/js'
 
 export default {
   data() {
@@ -87,11 +86,6 @@ export default {
       prevArrow: mdiArrowLeft,
     }
   },
-
-  watch: {
-    '$route.query': '$fetch',
-  },
-
   async fetch() {
     try {
       await this.$axios
@@ -107,6 +101,9 @@ export default {
     } catch (error) {
       this.$sentry.captureException(new Error(error))
     }
+  },
+  watch: {
+    '$route.query': '$fetch',
   },
   methods: {
     updateQuery(data) {

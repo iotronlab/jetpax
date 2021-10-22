@@ -13,8 +13,7 @@
 <script>
 export default {
   props: {
-    message: String,
-    required: false,
+    message: { type: String, required: false },
   },
 }
 </script>
