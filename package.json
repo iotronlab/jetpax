@@ -35,7 +35,7 @@
     "eslint-plugin-prettier": "^3.4.1",
     "nuxt-gsap-module": "^1.4.0",
     "nuxt-social-meta": "^1.0.0",
-    "prettier": "^2.3.0",
+    "prettier": "^2.8.0",
     "stylelint": "^13.13.1",
     "stylelint-config-prettier": "^8.0.2",
     "stylelint-config-standard": "^21.0.0"
